@@ -51,73 +51,75 @@
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1.5rem 4rem;
-    background: linear-gradient(to bottom, rgba(6,26,14,0.97), transparent);
-    backdrop-filter: blur(2px);
+    background: rgba(6,26,14,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(184,150,62,0.2);
+    padding: 0 5%;
+    height: 100px;
     transition: background 0.4s;
   }
-  nav.scrolled { background: rgba(6,26,14,0.97); border-bottom: 1px solid var(--navy-border); }
-
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--white);
-    text-decoration: none;
-  }
-  .nav-logo span { color: var(--gold); }
+  nav.scrolled { background: rgba(6,26,14,0.98); }
 
   .nav-links {
     display: flex; gap: 2.5rem; list-style: none;
     align-items: center;
   }
   .nav-links a {
-    font-size: 0.78rem;
-    letter-spacing: 0.1em;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--white-dim);
+    color: #7a9485;
     text-decoration: none;
-    transition: color 0.25s;
+    transition: color 0.2s;
   }
-  .nav-links a:hover { color: var(--gold-light); }
+  .nav-links a:hover { color: var(--gold); }
 
   .nav-cta {
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 9px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--navy) !important;
-    background: var(--gold);
-    padding: 0.55rem 1.4rem;
-    text-decoration: none;
-    transition: background 0.25s !important;
-  }
-  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
-
-  .nav-hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
     cursor: pointer;
-    background: none;
-    border: none;
-    padding: 4px;
+    transition: all 0.25s;
+    text-decoration: none;
   }
-  .nav-hamburger span {
-    display: block;
-    width: 24px;
-    height: 1px;
-    background: var(--white-dim);
-    transition: 0.3s;
+  .nav-cta:hover { background: var(--gold); color: var(--navy); }
+
+  .nav-cta-sellers {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.6);
+    padding: 9px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+    white-space: nowrap;
   }
+  .nav-cta-sellers:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+  .nav-details { display: none; position: relative; z-index: 300; }
+  .nav-details summary { list-style: none; cursor: pointer; width: 40px; height: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; }
+  .nav-details summary::-webkit-details-marker { display: none; }
+  .nav-details summary span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+  .nav-details .drop { position: fixed; top: 68px; left: 0; right: 0; background: rgba(6,26,14,0.98); backdrop-filter: blur(12px); padding: 2rem 5%; display: flex; flex-direction: column; gap: 1.25rem; border-bottom: 1px solid rgba(184,150,62,0.2); }
+  .nav-details .drop a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 1rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-details .drop a:hover { color: var(--gold); }
 
   /* ─── HERO ─── */
   #hero {
     position: relative;
     min-height: 100vh;
     display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 0 4rem 7rem;
+    padding: 0 5% 7rem;
     overflow: hidden;
   }
 
@@ -786,44 +788,35 @@
 
   /* ─── FOOTER ─── */
   footer {
-    background: var(--navy-mid);
-    border-top: 1px solid var(--navy-border);
-    padding: 2rem 4rem;
+    background: var(--navy);
+    border-top: 1px solid rgba(184,150,62,0.15);
+    padding: 40px 5%;
+  }
+
+  .footer-bottom {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
   }
 
-  .footer-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--white-dim);
+  .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.25);
   }
-  .footer-logo span { color: var(--gold); }
 
-  .footer-legal {
+  .footer-nav {
     display: flex; gap: 2rem;
     flex-wrap: wrap;
   }
-  .footer-legal a {
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(245,242,236,0.3);
+  .footer-nav a {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.35);
     text-decoration: none;
-    transition: color 0.25s;
+    transition: color 0.2s;
   }
-  .footer-legal a:hover { color: var(--white-dim); }
-
-  .footer-copy {
-    font-size: 0.68rem;
-    color: rgba(245,242,236,0.25);
-    letter-spacing: 0.05em;
-  }
+  .footer-nav a:hover { color: #f5f2ec; }
 
   /* ─── DIVIDER ─── */
   .gold-divider {
@@ -855,11 +848,12 @@
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 1024px) {
-    nav { padding: 1.5rem 2rem; }
+    nav { height: 68px; padding: 0 4%; }
+    nav svg { height: 52px !important; }
     .nav-links { display: none; }
-    .nav-hamburger { display: flex; }
+    .nav-details { display: block; }
 
-    #hero { padding: 0 2rem 5rem; }
+    #hero { padding: 0 5% 5rem; }
     .hero-stats { right: 2rem; bottom: 5rem; }
     .section-inner { padding: 5rem 2rem; }
 
@@ -870,7 +864,8 @@
     .process-steps::before { display: none; }
     .insights-grid { grid-template-columns: 1fr 1fr; }
     .contact-wrap { grid-template-columns: 1fr; gap: 4rem; }
-    footer { flex-direction: column; align-items: flex-start; padding: 2rem; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .footer-nav { flex-wrap: wrap; gap: 1rem; }
   }
 
   @media (max-width: 640px) {
@@ -882,66 +877,58 @@
     .hero-ctas { flex-direction: column; align-items: flex-start; }
     .process-steps { grid-template-columns: 1fr; }
   }
-
-  /* Mobile nav */
-  .mobile-nav {
-    display: none;
-    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    z-index: 99;
-    background: var(--navy-mid);
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-  }
-  .mobile-nav.open { display: flex; }
-  .mobile-nav a {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    font-weight: 300;
-    color: var(--white);
-    text-decoration: none;
-    letter-spacing: 0.05em;
-    transition: color 0.2s;
-  }
-  .mobile-nav a:hover { color: var(--gold-light); }
-  .mobile-nav-close {
-    position: absolute; top: 1.5rem; right: 2rem;
-    background: none; border: none;
-    font-size: 2rem; color: var(--white-dim);
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-  }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav id="mainNav">
-  <a href="#hero" class="nav-logo">Croatia<span>.</span>Investments</a>
+  <a href="index.html" style="text-decoration:none;display:flex;align-items:center;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" style="height:124px;width:auto;display:block;">
+      <defs>
+        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#e8d48a"/>
+          <stop offset="50%" style="stop-color:#d4a84c"/>
+          <stop offset="100%" style="stop-color:#b8922e"/>
+        </linearGradient>
+        <clipPath id="boxClip">
+          <rect x="34" y="34" width="92" height="92"/>
+        </clipPath>
+      </defs>
+      <rect x="34" y="34" width="92" height="92" fill="none" stroke="url(#goldGrad)" stroke-width="1.8"/>
+      <text x="65" y="107" font-family="Cormorant Garamond, Georgia, serif" font-size="76" font-weight="400" fill="#d4a84c" clip-path="url(#boxClip)" text-anchor="middle">C</text>
+      <text x="103" y="107" font-family="Cormorant Garamond, Georgia, serif" font-size="76" font-weight="400" fill="#ffffff" clip-path="url(#boxClip)" text-anchor="middle">I</text>
+      <line x1="146" y1="44" x2="146" y2="116" stroke="#b8963e" stroke-width="0.8" stroke-opacity="0.5"/>
+      <text x="162" y="72" font-family="Cormorant Garamond, Georgia, serif" font-size="28" font-weight="500" fill="#ffffff" letter-spacing="0.5">CROATIA</text>
+      <text x="162" y="100" font-family="Cormorant Garamond, Georgia, serif" font-size="28" font-weight="400" fill="#d4a84c" letter-spacing="0.5">INVESTMENTS</text>
+      <text x="162" y="120" font-family="Georgia, serif" font-size="8.5" font-weight="300" fill="#8a9ab0" letter-spacing="2.5" font-style="italic">PREMIUM DEVELOPMENT OPPORTUNITIES</text>
+      <line x1="162" y1="128" x2="372" y2="128" stroke="#b8963e" stroke-width="0.5" stroke-opacity="0.5"/>
+    </svg>
+  </a>
   <ul class="nav-links">
     <li><a href="#philosophy">Strategy</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#team">Team</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#insights">Insights</a></li>
-    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    <li><a href="about.html">About</a></li>
   </ul>
-  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <div style="display:flex;align-items:center;gap:0.75rem;">
+    <a href="#contact" class="nav-cta">Get in Touch</a>
+  </div>
+  <details class="nav-details">
+    <summary><span></span><span></span><span></span></summary>
+    <div class="drop">
+      <a href="#philosophy">Strategy</a>
+      <a href="#projects">Projects</a>
+      <a href="#team">Team</a>
+      <a href="#process">Process</a>
+      <a href="#insights">Insights</a>
+      <a href="about.html">About</a>
+      <a href="#contact" style="color:var(--gold);font-weight:500;">Get in Touch</a>
+    </div>
+  </details>
 </nav>
-
-<!-- MOBILE NAV -->
-<div class="mobile-nav" id="mobileNav">
-  <button class="mobile-nav-close" id="mobileClose">&times;</button>
-  <a href="#philosophy" onclick="closeMobile()">Strategy</a>
-  <a href="#projects" onclick="closeMobile()">Projects</a>
-  <a href="#team" onclick="closeMobile()">Team</a>
-  <a href="#process" onclick="closeMobile()">Process</a>
-  <a href="#insights" onclick="closeMobile()">Insights</a>
-  <a href="#contact" onclick="closeMobile()">Contact</a>
-</div>
 
 <!-- ═══ HERO ═══ -->
 <section id="hero">
@@ -1367,14 +1354,15 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Croatia<span>.</span>Investments</div>
-  <div class="footer-legal">
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="terms.html">Terms of Use</a>
-    <a href="cookie.html">Cookie Policy</a>
-    <a href="gdpr.html">Disclaimer</a>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Croatia Investments. All rights reserved.</div>
+    <div class="footer-nav">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="cookie.html">Cookie Policy</a>
+      <a href="gdpr.html">GDPR</a>
+    </div>
   </div>
-  <div class="footer-copy">© 2025 Croatia Investments. All rights reserved.</div>
 </footer>
 
 <script>
@@ -1383,15 +1371,6 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 80);
   });
-
-  // Mobile nav
-  document.getElementById('hamburger').addEventListener('click', () => {
-    document.getElementById('mobileNav').classList.add('open');
-  });
-  document.getElementById('mobileClose').addEventListener('click', closeMobile);
-  function closeMobile() {
-    document.getElementById('mobileNav').classList.remove('open');
-  }
 
   // Scroll reveal
   const revealEls = document.querySelectorAll('.reveal');
