@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Croatia Investments — Institutional Real Estate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #061a0e;
+    --navy-mid: #0b2214;
+    --navy-light: #122d1c;
+    --navy-border: #1a3d28;
+    --gold: #b8963e;
+    --gold-light: #d4af6a;
+    --gold-muted: rgba(184,150,62,0.15);
+    --gold-line: rgba(184,150,62,0.3);
+    --white: #f5f2ec;
+    --white-dim: rgba(245,242,236,0.65);
+    --white-faint: rgba(245,242,236,0.12);
+    --text-body: rgba(245,242,236,0.82);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE TEXTURE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0;
+    opacity: 0.025;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 128px;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.5rem 4rem;
+    background: linear-gradient(to bottom, rgba(6,26,14,0.97), transparent);
+    backdrop-filter: blur(2px);
+    transition: background 0.4s;
+  }
+  nav.scrolled { background: rgba(6,26,14,0.97); border-bottom: 1px solid var(--navy-border); }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  .nav-cta {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy) !important;
+    background: var(--gold);
+    padding: 0.55rem 1.4rem;
+    text-decoration: none;
+    transition: background 0.25s !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--white-dim);
+    transition: 0.3s;
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 4rem 7rem;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: linear-gradient(135deg, #061a0e 0%, #092015 40%, #061610 70%, #040f08 100%);
+  }
+
+  /* Geometric accent lines */
+  .hero-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(45deg, transparent 40%, rgba(184,150,62,0.04) 50%, transparent 60%),
+      linear-gradient(-45deg, transparent 35%, rgba(184,150,62,0.03) 50%, transparent 65%);
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 1;
+    background-image:
+      linear-gradient(rgba(184,150,62,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184,150,62,0.06) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: linear-gradient(to bottom right, transparent 30%, black 70%);
+  }
+
+  .hero-map-accent {
+    position: absolute;
+    right: 6%;
+    top: 18%;
+    width: 480px;
+    height: 480px;
+    z-index: 2;
+    opacity: 0.12;
+  }
+
+  .hero-content {
+    position: relative; z-index: 5;
+    max-width: 800px;
+  }
+
+  .hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-label::before {
+    content: '';
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.4s forwards;
+  }
+  .hero-h1 em { font-style: italic; color: var(--gold-light); }
+
+  .hero-sub {
+    font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+    color: var(--white-dim);
+    max-width: 560px;
+    line-height: 1.75;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.6s forwards;
+  }
+
+  .hero-ctas {
+    display: flex; gap: 1.2rem; align-items: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.8s forwards;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-primary svg { transition: transform 0.2s; }
+  .btn-primary:hover svg { transform: translateX(4px); }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    border: 1px solid var(--gold-line);
+    color: var(--white-dim);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    transition: border-color 0.25s, color 0.25s, transform 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-2px); }
+
+  .hero-stats {
+    position: absolute; right: 4rem; bottom: 7rem; z-index: 5;
+    display: flex; flex-direction: column; gap: 1.5rem;
+    opacity: 0;
+    animation: fadeLeft 1s 1s forwards;
+  }
+  .hero-stat {
+    text-align: right;
+    border-right: 1px solid var(--gold-line);
+    padding-right: 1.5rem;
+  }
+  .hero-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    margin-top: 0.25rem;
+  }
+
+  /* ─── SECTION COMMONS ─── */
+  section { position: relative; overflow: hidden; }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 7rem 4rem;
+  }
+
+  .section-label {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--gold);
+  }
+
+  .section-h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3.4rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  .section-h2 em { font-style: italic; color: var(--gold-light); }
+
+  /* ─── SECTION 2: PHILOSOPHY ─── */
+  #philosophy { background: var(--navy-mid); }
+
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .philosophy-text p {
+    font-size: 1rem;
+    color: var(--text-body);
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+  }
+
+  .philosophy-targets {
+    display: flex; flex-direction: column; gap: 0;
+  }
+  .target-item {
+    display: flex; align-items: flex-start; gap: 1.25rem;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid var(--navy-border);
+    transition: background 0.2s;
+  }
+  .target-item:first-child { border-top: 1px solid var(--navy-border); }
+
+  .target-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    padding-top: 0.15rem;
+    min-width: 28px;
+  }
+
+  .target-text {
+    font-size: 0.92rem;
+    color: var(--text-body);
+    line-height: 1.5;
+  }
+  .target-text strong {
+    display: block;
+    font-weight: 500;
+    color: var(--white);
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+  }
+
+  /* ─── SECTION 3: PROJECTS ─── */
+  #projects { background: var(--navy); }
+
+  .projects-intro {
+    font-size: 1rem;
+    color: var(--text-body);
+    max-width: 640px;
+    margin-bottom: 4rem;
+    line-height: 1.8;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--navy-border);
+    margin-bottom: 3rem;
+  }
+
+  .project-card {
+    background: var(--navy-mid);
+    padding: 2.5rem;
+    position: relative;
+    transition: background 0.3s;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .project-card:hover { background: var(--navy-light); }
+  .project-card:hover::before { opacity: 1; }
+
+  .project-type {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .project-type::before {
+    content: '';
+    display: block;
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  .project-location {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 1.75rem;
+  }
+
+  .project-specs {
+    display: flex; flex-direction: column; gap: 0;
+    margin-bottom: 2rem;
+  }
+  .spec-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--navy-border);
+    gap: 1rem;
+  }
+  .spec-row:first-child { border-top: 1px solid var(--navy-border); }
+  .spec-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    flex-shrink: 0;
+  }
+  .spec-value {
+    font-size: 0.88rem;
+    color: var(--white);
+    font-weight: 400;
+    text-align: right;
+  }
+  .spec-value.gold { color: var(--gold-light); font-family: 'Cormorant Garamond', serif; font-size: 1rem; }
+
+  .project-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px solid rgba(184,150,62,0.4);
+    color: var(--gold);
+    padding: 0.3rem 0.7rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-cta {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    transition: gap 0.2s;
+  }
+  .project-cta:hover { gap: 0.9rem; }
+
+  /* ─── SECTION 4: TEAM ─── */
+  #team { background: var(--navy-mid); }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--navy-border);
+    margin-top: 3rem;
+  }
+
+  .team-card {
+    background: var(--navy-mid);
+    padding: 3rem;
+    position: relative;
+  }
+  .team-card::after {
+    content: '';
+    position: absolute; left: 3rem; bottom: 0;
+    width: 40px; height: 1px;
+    background: var(--gold);
+  }
+
+  .team-role {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .team-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 1.25rem;
+    line-height: 1.2;
+  }
+
+  .team-bio {
+    font-size: 0.88rem;
+    color: var(--text-body);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .team-linkedin {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+  .team-linkedin:hover { color: var(--gold); }
+  .team-linkedin svg { opacity: 0.5; transition: opacity 0.25s; }
+  .team-linkedin:hover svg { opacity: 1; }
+
+  /* ─── SECTION 5: PROCESS ─── */
+  #process { background: var(--navy); }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    margin-top: 3.5rem;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 2.5rem; left: 5%; right: 5%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-line) 20%, var(--gold-line) 80%, transparent);
+    z-index: 0;
+  }
+
+  .process-step {
+    padding: 0 1.5rem 0 0;
+    position: relative; z-index: 1;
+  }
+
+  .step-num-wrap {
+    width: 48px; height: 48px;
+    border: 1px solid var(--gold-line);
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .process-step:hover .step-num-wrap {
+    border-color: var(--gold);
+    background: var(--gold-muted);
+  }
+
+  .step-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .step-desc {
+    font-size: 0.82rem;
+    color: var(--white-dim);
+    line-height: 1.65;
+  }
+
+  .process-cta-wrap {
+    display: flex; justify-content: center;
+    margin-top: 4rem;
+  }
+
+  /* ─── SECTION 6: INSIGHTS ─── */
+  #insights { background: var(--navy-mid); }
+
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--navy-border);
+    margin-top: 3rem;
+  }
+
+  .insight-card {
+    background: var(--navy-mid);
+    padding: 2.5rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .insight-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 0;
+    background: linear-gradient(to top, var(--gold-muted), transparent);
+    transition: height 0.4s;
+  }
+  .insight-card:hover { background: var(--navy-light); }
+  .insight-card:hover::after { height: 100%; }
+
+  .insight-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .insight-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.35;
+    margin-bottom: 1rem;
+    position: relative; z-index: 1;
+  }
+
+  .insight-excerpt {
+    font-size: 0.82rem;
+    color: var(--text-body);
+    line-height: 1.7;
+    position: relative; z-index: 1;
+  }
+
+  .insight-read {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 1.5rem;
+    text-decoration: none;
+    position: relative; z-index: 1;
+  }
+
+  /* ─── SECTION 7: CONTACT ─── */
+  #contact {
+    background: var(--navy);
+    border-top: 1px solid var(--navy-border);
+  }
+
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 8rem;
+    align-items: start;
+  }
+
+  .contact-intro-text {
+    font-size: 1rem;
+    color: var(--text-body);
+    line-height: 1.85;
+    margin-bottom: 3rem;
+    max-width: 480px;
+  }
+
+  .contact-channels {
+    display: flex; flex-direction: column; gap: 0;
+  }
+  .contact-channel {
+    display: flex; align-items: center; gap: 1.25rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--navy-border);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+  .contact-channel:first-child { border-top: 1px solid var(--navy-border); }
+  .contact-channel:hover .contact-channel-value { color: var(--gold-light); }
+
+  .contact-channel-icon {
+    width: 36px; height: 36px;
+    border: 1px solid var(--navy-border);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--gold);
+  }
+
+  .contact-channel-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    margin-bottom: 0.15rem;
+  }
+
+  .contact-channel-value {
+    font-size: 0.9rem;
+    color: var(--white);
+    transition: color 0.25s;
+  }
+
+  .contact-form-side h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+  .contact-form-side .form-sub {
+    font-size: 0.82rem;
+    color: var(--white-dim);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: var(--navy-light);
+    border: 1px solid var(--navy-border);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    padding: 0.8rem 1rem;
+    outline: none;
+    transition: border-color 0.25s;
+    appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: rgba(245,242,236,0.3);
+  }
+  .form-group select option { background: var(--navy-mid); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 1rem;
+    cursor: pointer;
+    transition: background 0.25s;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--gold-light); }
+
+  .form-disclaimer {
+    font-size: 0.7rem;
+    color: var(--white-dim);
+    margin-top: 0.75rem;
+    line-height: 1.5;
+    opacity: 0.6;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy-mid);
+    border-top: 1px solid var(--navy-border);
+    padding: 2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+  }
+  .footer-logo span { color: var(--gold); }
+
+  .footer-legal {
+    display: flex; gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .footer-legal a {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245,242,236,0.3);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+  .footer-legal a:hover { color: var(--white-dim); }
+
+  .footer-copy {
+    font-size: 0.68rem;
+    color: rgba(245,242,236,0.25);
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── DIVIDER ─── */
+  .gold-divider {
+    width: 48px; height: 1px;
+    background: var(--gold);
+    margin: 2rem 0;
+  }
+
+  /* ─── SCROLL FADE ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s, transform 0.7s;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ─── KEYFRAMES ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes fadeLeft {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    nav { padding: 1.5rem 2rem; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+
+    #hero { padding: 0 2rem 5rem; }
+    .hero-stats { right: 2rem; bottom: 5rem; }
+    .section-inner { padding: 5rem 2rem; }
+
+    .philosophy-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .projects-grid { grid-template-columns: 1fr 1fr; }
+    .team-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .process-steps::before { display: none; }
+    .insights-grid { grid-template-columns: 1fr 1fr; }
+    .contact-wrap { grid-template-columns: 1fr; gap: 4rem; }
+    footer { flex-direction: column; align-items: flex-start; padding: 2rem; }
+  }
+
+  @media (max-width: 640px) {
+    .hero-stats { display: none; }
+    .hero-h1 { font-size: 2.4rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .insights-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-ctas { flex-direction: column; align-items: flex-start; }
+    .process-steps { grid-template-columns: 1fr; }
+  }
+
+  /* Mobile nav */
+  .mobile-nav {
+    display: none;
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 99;
+    background: var(--navy-mid);
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .mobile-nav a:hover { color: var(--gold-light); }
+  .mobile-nav-close {
+    position: absolute; top: 1.5rem; right: 2rem;
+    background: none; border: none;
+    font-size: 2rem; color: var(--white-dim);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#hero" class="nav-logo">Croatia<span>.</span>Investments</a>
+  <ul class="nav-links">
+    <li><a href="#philosophy">Strategy</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#insights">Insights</a></li>
+    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" id="mobileClose">&times;</button>
+  <a href="#philosophy" onclick="closeMobile()">Strategy</a>
+  <a href="#projects" onclick="closeMobile()">Projects</a>
+  <a href="#team" onclick="closeMobile()">Team</a>
+  <a href="#process" onclick="closeMobile()">Process</a>
+  <a href="#insights" onclick="closeMobile()">Insights</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <!-- Decorative Croatia outline -->
+  <svg class="hero-map-accent" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M80,120 Q120,80 180,90 Q240,100 280,70 Q340,40 400,80 Q440,100 460,140 Q480,180 440,210 Q400,240 360,260 Q320,280 300,320 Q280,360 240,370 Q200,380 170,350 Q140,320 120,290 Q90,250 70,210 Q50,170 80,120Z" stroke="#b8963e" stroke-width="1.5" fill="none" stroke-dasharray="4 6"/>
+    <circle cx="220" cy="180" r="4" fill="#b8963e" opacity="0.7"/>
+    <circle cx="310" cy="140" r="3" fill="#b8963e" opacity="0.5"/>
+    <circle cx="170" cy="240" r="3" fill="#b8963e" opacity="0.5"/>
+    <circle cx="360" cy="200" r="3" fill="#b8963e" opacity="0.4"/>
+    <line x1="220" y1="180" x2="310" y2="140" stroke="#b8963e" stroke-width="0.5" opacity="0.3"/>
+    <line x1="220" y1="180" x2="170" y2="240" stroke="#b8963e" stroke-width="0.5" opacity="0.3"/>
+    <line x1="220" y1="180" x2="360" y2="200" stroke="#b8963e" stroke-width="0.5" opacity="0.3"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-label">Institutional Real Estate · Croatia &amp; the Adriatic</div>
+    <h1 class="hero-h1">
+      Off-Market Opportunities.<br>
+      <em>Institutional Grade.</em><br>
+      Strategic Returns.
+    </h1>
+    <p class="hero-sub">
+      Connecting strategic capital with fully permitted residential, mixed-use, and tourism developments. High-potential projects structured for professional investors and family offices.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">
+        Explore Opportunities
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </a>
+      <a href="#contact" class="btn-ghost">Request Investment Teaser</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">€200M+</div>
+      <div class="hero-stat-label">Project Pipeline</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">50+</div>
+      <div class="hero-stat-label">Units Per Project</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">100%</div>
+      <div class="hero-stat-label">Off-Market</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PHILOSOPHY ═══ -->
+<section id="philosophy">
+  <div class="section-inner">
+    <div class="philosophy-grid">
+      <div class="philosophy-text reveal">
+        <div class="section-label">Investment Philosophy</div>
+        <h2 class="section-h2">Our Investment<br><em>Philosophy</em></h2>
+        <div class="gold-divider"></div>
+        <p>At Croatia Investments, we focus exclusively on off-market development projects that deliver predictable returns and institutional-grade risk profiles.</p>
+        <p>Every project undergoes rigorous due diligence — ensuring full transparency and alignment with investor expectations across legal, financial, and market dimensions.</p>
+        <p>We operate at the intersection of local expertise and international capital requirements, bridging the gap between Croatian development opportunities and European and global investors.</p>
+        <a href="#process" class="btn-ghost" style="margin-top:1.5rem;">Our Process →</a>
+      </div>
+      <div class="philosophy-targets reveal">
+        <div class="section-label">We Target</div>
+        <div class="target-item">
+          <div class="target-num">01</div>
+          <div class="target-text">
+            <strong>Residential Developments</strong>
+            50+ units in prime urban and coastal locations
+          </div>
+        </div>
+        <div class="target-item">
+          <div class="target-num">02</div>
+          <div class="target-text">
+            <strong>Mixed-Use Urban Projects</strong>
+            Retail, office, and residential in high-demand corridors
+          </div>
+        </div>
+        <div class="target-item">
+          <div class="target-num">03</div>
+          <div class="target-text">
+            <strong>Premium Tourism Assets</strong>
+            Hotels, aparthotels, and branded residences on the Adriatic
+          </div>
+        </div>
+        <div class="target-item">
+          <div class="target-num">04</div>
+          <div class="target-text">
+            <strong>Permit-Ready Land</strong>
+            Sites with issued construction permits, ready for immediate development
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROJECTS ═══ -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Current Opportunities</div>
+      <h2 class="section-h2">Off-Market<br><em>Portfolio</em></h2>
+      <p class="projects-intro">Each project is structured for professional investors seeking high-quality development opportunities in prime Croatian locations. All opportunities are off-market and available under NDA.</p>
+    </div>
+
+    <div class="projects-grid reveal">
+
+      <!-- Project 1 -->
+      <div class="project-card">
+        <div class="project-type">Residential Development</div>
+        <div class="project-location">Zagreb<br>Central District</div>
+        <div class="project-tag">Fully Permitted</div>
+        <div class="project-specs">
+          <div class="spec-row">
+            <span class="spec-label">Units</span>
+            <span class="spec-value">200 residential units</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Investment Size</span>
+            <span class="spec-value gold">€60,000,000</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">IRR Target</span>
+            <span class="spec-value">18–22%</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Exit Strategy</span>
+            <span class="spec-value">Sale / Build-to-Rent</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Timeline</span>
+            <span class="spec-value">36 months</span>
+          </div>
+        </div>
+        <a href="#contact" class="project-cta">
+          Request Teaser
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#b8963e" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card">
+        <div class="project-type">Mixed-Use</div>
+        <div class="project-location">Split<br>Coastal Zone</div>
+        <div class="project-tag">Permits in Process</div>
+        <div class="project-specs">
+          <div class="spec-row">
+            <span class="spec-label">Size</span>
+            <span class="spec-value">12,500 m²</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Investment Size</span>
+            <span class="spec-value gold">€35,000,000</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">IRR Target</span>
+            <span class="spec-value">15–19%</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Exit Strategy</span>
+            <span class="spec-value">JV / Sale</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Timeline</span>
+            <span class="spec-value">48 months</span>
+          </div>
+        </div>
+        <a href="#contact" class="project-cta">
+          Request Teaser
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#b8963e" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card">
+        <div class="project-type">Tourism Asset</div>
+        <div class="project-location">Dalmatian<br>Islands</div>
+        <div class="project-tag">Fully Permitted</div>
+        <div class="project-specs">
+          <div class="spec-row">
+            <span class="spec-label">Capacity</span>
+            <span class="spec-value">80 keys / 40 villas</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Investment Size</span>
+            <span class="spec-value gold">€48,000,000</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">IRR Target</span>
+            <span class="spec-value">16–20%</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Exit Strategy</span>
+            <span class="spec-value">Brand Franchise / Sale</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Timeline</span>
+            <span class="spec-value">42 months</span>
+          </div>
+        </div>
+        <a href="#contact" class="project-cta">
+          Request Teaser
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#b8963e" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+
+    <div style="text-align:center; margin-top:1rem;" class="reveal">
+      <p style="font-size:0.8rem; color: var(--white-dim); letter-spacing:0.05em;">
+        Full project details, financials, and permits available under NDA to qualified investors.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TEAM ═══ -->
+<section id="team">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Our Team</div>
+      <h2 class="section-h2">People Behind<br><em>The Platform</em></h2>
+      <p style="max-width:560px; color:var(--text-body); font-size:1rem; line-height:1.8; margin-top:1rem;">Croatia Investments is led by professionals with extensive experience in Croatian real estate development, investment structuring, and international capital sourcing.</p>
+    </div>
+
+    <div class="team-grid reveal">
+      <div class="team-card">
+        <div class="team-role">Founder &amp; Principal</div>
+        <div class="team-name">Davor B.</div>
+        <p class="team-bio">Extensive background in Croatian real estate development, off-market deal origination, and joint venture structuring. Deep network across Adriatic development markets and established relationships with Austrian and German investors. Track record across residential, mixed-use, and tourism asset classes.</p>
+        <a href="#" class="team-linkedin">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn Profile
+        </a>
+      </div>
+      <div class="team-card">
+        <div class="team-role">Investment Director</div>
+        <div class="team-name">[Name]</div>
+        <p class="team-bio">Capital markets specialist with a focus on cross-border real estate transactions and fund relationships across EU and global investor networks. Experience in structuring development JVs and connecting institutional capital with high-performing European real estate opportunities.</p>
+        <a href="#" class="team-linkedin">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn Profile
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section id="process">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">How We Work</div>
+      <h2 class="section-h2">Investment<br><em>Process</em></h2>
+    </div>
+
+    <div class="process-steps reveal">
+      <div class="process-step">
+        <div class="step-num-wrap"><span class="step-num">01</span></div>
+        <div class="step-title">Project Selection</div>
+        <p class="step-desc">Rigorous due diligence of land, permits, and market potential. Only projects meeting institutional criteria proceed.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num-wrap"><span class="step-num">02</span></div>
+        <div class="step-title">Teaser &amp; NDA</div>
+        <p class="step-desc">Qualified investors receive high-level project information under a mutual confidentiality agreement.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num-wrap"><span class="step-num">03</span></div>
+        <div class="step-title">Data Room Access</div>
+        <p class="step-desc">Full financials, permits, market studies, and legal documentation made available for serious investors.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num-wrap"><span class="step-num">04</span></div>
+        <div class="step-title">Bids &amp; Negotiation</div>
+        <p class="step-desc">Structured offers received and evaluated. Transparent, competitive selection process with clear timeline.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num-wrap"><span class="step-num">05</span></div>
+        <div class="step-title">Closing &amp; Partnership</div>
+        <p class="step-desc">Seamless execution with full legal and financial support. Long-term alignment through structured partnership.</p>
+      </div>
+    </div>
+
+    <div class="process-cta-wrap reveal">
+      <a href="#contact" class="btn-primary">
+        Schedule a Call
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INSIGHTS ═══ -->
+<section id="insights">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Market Intelligence</div>
+      <h2 class="section-h2">Croatia Real Estate<br><em>Insights</em></h2>
+    </div>
+
+    <div class="insights-grid reveal">
+      <div class="insight-card">
+        <div class="insight-tag">Residential · Market Analysis</div>
+        <h3 class="insight-title">Why Off-Market Residential Projects in Zagreb Attract Austrian &amp; German Capital</h3>
+        <p class="insight-excerpt">Zagreb's residential market continues to outperform EU peers on yield compression, permit security, and demand-supply imbalance — making it a compelling proposition for DACH-region family offices.</p>
+        <a href="#contact" class="insight-read">Read More →</a>
+      </div>
+      <div class="insight-card">
+        <div class="insight-tag">Tourism · Dalmatia</div>
+        <h3 class="insight-title">Tourism Development in Dalmatia: Opportunities for Institutional Capital</h3>
+        <p class="insight-excerpt">With limited new supply and sustained demand growth, permitted tourism developments on the Adriatic coast offer institutional investors a rare entry point into a fundamentally constrained market.</p>
+        <a href="#contact" class="insight-read">Read More →</a>
+      </div>
+      <div class="insight-card">
+        <div class="insight-tag">Strategy · Trends</div>
+        <h3 class="insight-title">Build-to-Rent vs Build-to-Sell: Structuring Returns in the Adriatic Market</h3>
+        <p class="insight-excerpt">An analysis of exit strategies across Croatian development projects — comparing IRR profiles, risk-adjusted returns, and capital recycling timelines for both residential and tourism assets.</p>
+        <a href="#contact" class="insight-read">Read More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-wrap">
+      <div class="reveal">
+        <div class="section-label">Get in Touch</div>
+        <h2 class="section-h2">Institutional<br><em>Inquiries</em></h2>
+        <div class="gold-divider"></div>
+        <p class="contact-intro-text">For project teasers, NDA requests, or direct investment discussions, contact our team. We respond to qualified institutional inquiries within 24 hours.</p>
+
+        <div class="contact-channels">
+          <a href="mailto:contact@croatia-investments.com" class="contact-channel">
+            <div class="contact-channel-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-channel-label">Email</div>
+              <div class="contact-channel-value">contact@croatia-investments.com</div>
+            </div>
+          </a>
+          <a href="tel:+38500000000" class="contact-channel">
+            <div class="contact-channel-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63 19.79 19.79 0 01.07 2.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-channel-label">Phone</div>
+              <div class="contact-channel-value">+385 XX XXX XXXX</div>
+            </div>
+          </a>
+          <a href="#" class="contact-channel">
+            <div class="contact-channel-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+            <div>
+              <div class="contact-channel-label">LinkedIn</div>
+              <div class="contact-channel-value">Croatia Investments</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form-side reveal">
+        <h3>Request Investment Teaser</h3>
+        <p class="form-sub">Complete the form below. All inquiries are treated with strict confidentiality.</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="First name">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Organization</label>
+          <input type="text" placeholder="Fund / Family Office / Company">
+        </div>
+        <div class="form-group">
+          <label>Investment Interest</label>
+          <select>
+            <option value="" disabled selected>Select category</option>
+            <option>Residential Development</option>
+            <option>Mixed-Use Projects</option>
+            <option>Tourism Assets</option>
+            <option>All Opportunities</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Investment Capacity</label>
+          <select>
+            <option value="" disabled selected>Approximate ticket size</option>
+            <option>€5M – €15M</option>
+            <option>€15M – €50M</option>
+            <option>€50M – €100M</option>
+            <option>€100M+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message (Optional)</label>
+          <textarea placeholder="Specific requirements or questions..."></textarea>
+        </div>
+        <button class="form-submit">Request Teaser &amp; NDA</button>
+        <p class="form-disclaimer">By submitting this form you agree to receive project information under confidentiality. Your details will not be shared with third parties.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Croatia<span>.</span>Investments</div>
+  <div class="footer-legal">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Use</a>
+    <a href="#">Cookie Policy</a>
+    <a href="#">Disclaimer</a>
+  </div>
+  <div class="footer-copy">© 2025 Croatia Investments. All rights reserved.</div>
+</footer>
+
+<script>
+  // NAV scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+  });
+
+  // Mobile nav
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileNav').classList.add('open');
+  });
+  document.getElementById('mobileClose').addEventListener('click', closeMobile);
+  function closeMobile() {
+    document.getElementById('mobileNav').classList.remove('open');
+  }
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
