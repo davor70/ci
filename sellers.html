@@ -518,6 +518,30 @@ function submitSellersForm() {
       </p>
     </div>`;
 }
+
+// Close hamburger menu and scroll to anchor
+document.querySelectorAll('.nav-details .drop a').forEach(function(link) {
+  link.addEventListener('click', function(e) {
+    var href = this.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      // Close the details element
+      var details = document.querySelector('.nav-details');
+      if (details) details.removeAttribute('open');
+      // Scroll to target after short delay
+      setTimeout(function() {
+        var target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 150);
+    } else {
+      // For regular links just close the menu
+      var details = document.querySelector('.nav-details');
+      if (details) details.removeAttribute('open');
+    }
+  });
+});
 </script>
 
 </body>

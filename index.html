@@ -1876,6 +1876,24 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   revealEls.forEach(el => observer.observe(el));
 
+  // Close hamburger and scroll to anchor
+  document.querySelectorAll('.nav-details .drop a').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var href = this.getAttribute('href');
+      var details = document.querySelector('.nav-details');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        if (details) details.removeAttribute('open');
+        setTimeout(function() {
+          var target = document.querySelector(href);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 150);
+      } else {
+        if (details) details.removeAttribute('open');
+      }
+    });
+  });
+
   // Teaser modal
   function openTeaserModal(projectName, projectType) {
     document.getElementById('teaserProjectName').textContent = projectName;
