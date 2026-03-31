@@ -1039,35 +1039,113 @@
   }
 
   /* ─── RESPONSIVE ─── */
+  /* ─── TABLET (max 1024px) ─── */
   @media (max-width: 1024px) {
+    /* Nav */
     nav { height: 68px; padding: 0 4%; }
     nav svg { height: 52px !important; }
     .nav-links { display: none; }
     .nav-details { display: block; }
 
-    #hero { padding: 100px 5% 5rem; }
-    .hero-stats { right: 2rem; bottom: 5rem; }
-    .section-inner { padding: 5rem 2rem; }
+    /* Hero */
+    #hero { padding: 90px 5% 4rem; }
+    .hero-stats { right: 2rem; bottom: 4rem; }
+    .hero-h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
 
+    /* Sections */
+    .section-inner { padding: 4rem 5%; }
+
+    /* Philosophy */
     .philosophy-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+    /* Projects */
     .projects-grid { grid-template-columns: 1fr 1fr; }
+
+    /* Team */
     .team-grid { grid-template-columns: 1fr; }
-    .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+
+    /* Process */
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
     .process-steps::before { display: none; }
+
+    /* Insights */
     .insights-grid { grid-template-columns: 1fr 1fr; }
-    .contact-wrap { grid-template-columns: 1fr; gap: 4rem; }
-    .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+    /* Contact */
+    .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
+    .contact-intro-text { max-width: 100%; }
+
+    /* Footer */
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 1rem; }
     .footer-nav { flex-wrap: wrap; gap: 1rem; }
   }
 
+  /* ─── MOBILE (max 640px) ─── */
   @media (max-width: 640px) {
+    /* Nav */
+    nav { height: 64px; padding: 0 4%; }
+    nav svg { height: 44px !important; }
+
+    /* Hero */
+    #hero { padding: 80px 4% 3rem; }
     .hero-stats { display: none; }
-    .hero-h1 { font-size: 2.4rem; }
+    .hero-h1 { font-size: 2.1rem; line-height: 1.12; }
+    .hero-sub { font-size: 0.9rem; }
+    .hero-ctas { flex-direction: column; align-items: stretch; }
+    .btn-primary, .btn-ghost { text-align: center; justify-content: center; }
+    .hero-map-accent { display: none; }
+
+    /* Sections */
+    .section-inner { padding: 3rem 4%; }
+    .section-h2 { font-size: 1.9rem; }
+
+    /* Philosophy */
+    .philosophy-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+    /* Projects */
     .projects-grid { grid-template-columns: 1fr; }
+    .project-card { padding: 1.75rem; }
+
+    /* Team */
+    .team-grid { grid-template-columns: 1fr; }
+    .team-card { padding: 1.75rem; }
+
+    /* Process */
+    .process-steps { grid-template-columns: 1fr; gap: 2rem; }
+    .process-steps::before { display: none; }
+    .process-step { padding-right: 0; }
+
+    /* Insights */
     .insights-grid { grid-template-columns: 1fr; }
+    .insight-card { padding: 1.75rem; }
+
+    /* Contact */
+    .contact-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
     .form-row { grid-template-columns: 1fr; }
-    .hero-ctas { flex-direction: column; align-items: flex-start; }
-    .process-steps { grid-template-columns: 1fr; }
+    .contact-channel { padding: 1rem 0; }
+
+    /* Hero stats */
+    .hero-stat-num { font-size: 1.6rem; }
+
+    /* Footer */
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .footer-nav { flex-wrap: wrap; gap: 0.75rem; }
+    footer { padding: 2rem 4%; }
+
+    /* Teaser modal */
+    .teaser-overlay { padding: 1rem; align-items: flex-end; }
+    .teaser-modal { max-height: 90vh; overflow-y: auto; }
+    .teaser-header { padding: 1.5rem; }
+    .teaser-body { padding: 1.5rem; }
+    .teaser-form-row { grid-template-columns: 1fr; }
+  }
+
+  /* ─── SMALL MOBILE (max 400px) ─── */
+  @media (max-width: 400px) {
+    .hero-h1 { font-size: 1.8rem; }
+    .section-h2 { font-size: 1.6rem; }
+    .project-card, .team-card, .insight-card { padding: 1.25rem; }
+    .section-inner { padding: 2.5rem 4%; }
   }
 </style>
 </head>
@@ -1498,13 +1576,13 @@
               <div class="contact-channel-value">contact@croatia-investments.com</div>
             </div>
           </a>
-          <a href="tel:+38500000000" class="contact-channel">
+          <a href="tel:+385955043770" class="contact-channel">
             <div class="contact-channel-icon">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63 19.79 19.79 0 01.07 2.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
             </div>
             <div>
               <div class="contact-channel-label">Phone</div>
-              <div class="contact-channel-value">+385 XX XXX XXXX</div>
+              <div class="contact-channel-value">+385 95 504 3770</div>
             </div>
           </a>
           <a href="#" class="contact-channel">
