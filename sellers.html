@@ -42,8 +42,8 @@
   .nav-details summary { list-style: none; cursor: pointer; width: 40px; height: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; }
   .nav-details summary::-webkit-details-marker { display: none; }
   .nav-details summary span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
-  .nav-details .drop { position: fixed; top: 68px; left: 0; right: 0; background: rgba(6,26,14,0.98); backdrop-filter: blur(12px); padding: 2rem 5%; display: flex; flex-direction: column; gap: 1.25rem; border-bottom: 1px solid rgba(184,150,62,0.2); }
-  .nav-details .drop a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 1rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-details .drop { position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: rgba(6,26,14,0.98); backdrop-filter: blur(12px); padding: 1.5rem 5%; display: flex; flex-direction: column; gap: 0; overflow-y: auto; z-index: 299; }
+  .nav-details .drop a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 1rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); display: block; }
   .nav-details .drop a:hover { color: var(--gold); }
   @media(max-width:768px) { .nav-links { display: none; } .nav-cta { display: none; } .nav-cta-sellers { display: none; } .nav-details { display: block; } }
 
