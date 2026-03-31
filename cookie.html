@@ -290,7 +290,7 @@
   <p>If you have any questions about our use of cookies, please contact us:</p>
   <div class="contact-box">
     <p><strong style="color:var(--gold);">Croatia Investments</strong></p>
-    <p>Email: <a href="mailto:info@croatia-investments.com">info@croatia-investments.com</a></p>
+    <p>Email: <a href="/cdn-cgi/l/email-protection#1b72757d745b7869747a6f727a3672756d7e686f767e756f6835787476"><span class="__cf_email__" data-cfemail="9df4f3fbf2ddfeeff2fce9f4fcb0f4f3ebf8eee9f0f8f3e9eeb3fef2f0">[email&#160;protected]</span></a></p>
     <p>Phone: +385 95 504 3770</p>
     <p>Address: Rijeka, Croatia</p>
   </div>
@@ -317,7 +317,7 @@
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function() {
   var consent = localStorage.getItem('ci-cookie-consent');
   if (!consent) {
@@ -331,6 +331,7 @@
     else prefEl.textContent = 'Not yet set';
   }
 })();
+</script>
 
 function cookieChoice(type) {
   localStorage.setItem('ci-cookie-consent', type);
@@ -349,6 +350,7 @@ function cookieChoice(type) {
 </script>
 
 
+<script>
 // Mobile nav
 (function() {
   var btn = document.getElementById('navHamburger');
@@ -368,16 +370,4 @@ function cookieChoice(type) {
   nav.querySelectorAll('a').forEach(function(a) {
     a.addEventListener('click', function() {
       var href = a.getAttribute('href');
-      closeNav();
-      if (href && href.startsWith('#')) {
-        setTimeout(function() {
-          var el = document.querySelector(href);
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }, 200);
-      }
-    });
-  });
-})();
-
-</body>
-</html>
+   

@@ -373,7 +373,7 @@
           </div>
           <div>
             <div class="sellers-channel-label">Email</div>
-            <div class="sellers-channel-value">contact@croatia-investments.com</div>
+            <div class="sellers-channel-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="71121e1f051012053112031e100518105c181f071402051c141f05025f121e1c">[email&#160;protected]</a></div>
           </div>
         </div>
         <div class="sellers-channel">
@@ -496,7 +496,7 @@
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function() {
   var consent = localStorage.getItem('ci-cookie-consent');
   if (!consent) { document.getElementById('cookie-banner').style.display = 'flex'; }
@@ -568,15 +568,4 @@ document.querySelectorAll('.nav-details .drop a').forEach(function(link) {
     a.addEventListener('click', function() {
       var href = a.getAttribute('href');
       closeNav();
-      if (href && href.startsWith('#')) {
-        setTimeout(function() {
-          var el = document.querySelector(href);
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }, 200);
-      }
-    });
-  });
-})();
-
-</body>
-</html>
+    
