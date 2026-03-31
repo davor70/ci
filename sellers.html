@@ -38,15 +38,14 @@
   .nav-cta:hover { background: var(--gold); color: var(--navy); }
   .nav-cta-sellers { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); padding: 9px 20px; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: all 0.25s; white-space: nowrap; }
   .nav-cta-sellers:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
-  .nav-details { display: none; position: relative; z-index: 300; }
-  .nav-details summary { list-style: none; cursor: pointer; width: 40px; height: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; }
-  .nav-details summary::-webkit-details-marker { display: none; }
-  .nav-details summary span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
-  .nav-details .drop { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: rgba(6,26,14,0.98); backdrop-filter: blur(12px); padding: 1.5rem 5%; flex-direction: column; gap: 0; overflow-y: auto; z-index: 299; }
-  .nav-details[open] .drop { display: flex; }
-  .nav-details .drop a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 1rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); display: block; }
-  .nav-details .drop a:hover { color: var(--gold); }
-  @media(max-width:768px) { .nav-links { display: none; } .nav-cta { display: none; } .nav-cta-sellers { display: none; } .nav-details { display: block; } }
+  .nav-hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+  .nav-mobile { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(6,26,14,0.99); z-index: 9999; flex-direction: column; padding: 5rem 5% 2rem; overflow-y: auto; }
+  .nav-mobile.open { display: flex; }
+  .nav-mobile a { color: rgba(255,255,255,0.80); text-decoration: none; font-family: 'DM Sans', sans-serif; font-size: 1.1rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); display: block; transition: color 0.2s; }
+  .nav-mobile a:hover { color: #b8963e; }
+  .nav-mobile-close { position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 2rem; cursor: pointer; line-height: 1; padding: 4px 8px; }
+  @media(max-width:768px) { .nav-links { display: none; } .nav-cta { display: none; } .nav-cta-sellers { display: none; } .nav-hamburger { display: flex; } }
 
   /* ─── PAGE HERO ─── */
   .page-hero { background: var(--navy); padding: 160px 5% 90px; position: relative; overflow: hidden; }
@@ -231,20 +230,9 @@
     <a href="sellers.html" class="nav-cta-sellers active">List Your Project</a>
     <a href="#list-project" class="nav-cta">Get in Touch</a>
   </div>
-  <details class="nav-details">
-    <summary><span></span><span></span><span></span></summary>
-    <div class="drop">
-      <a href="index.html">Home</a>
-      <a href="index.html#philosophy">Strategy</a>
-      <a href="index.html#projects">Projects</a>
-      <a href="index.html#team">Team</a>
-      <a href="index.html#process">Process</a>
-      <a href="index.html#insights">Insights</a>
-      <a href="about.html">About</a>
-      <a href="sellers.html" style="color:var(--gold);">List Your Project</a>
-      <a href="#list-project" style="color:var(--gold);font-weight:500;">Get in Touch</a>
-    </div>
-  </details>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -544,6 +532,37 @@ document.querySelectorAll('.nav-details .drop a').forEach(function(link) {
   });
 });
 </script>
+
+
+// Mobile nav
+(function() {
+  var btn = document.getElementById('navHamburger');
+  var nav = document.getElementById('navMobile');
+  var close = document.getElementById('navClose');
+  if (!btn || !nav) return;
+
+  btn.addEventListener('click', function() {
+    nav.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+  function closeNav() {
+    nav.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  if (close) close.addEventListener('click', closeNav);
+  nav.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      var href = a.getAttribute('href');
+      closeNav();
+      if (href && href.startsWith('#')) {
+        setTimeout(function() {
+          var el = document.querySelector(href);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 200);
+      }
+    });
+  });
+})();
 
 </body>
 </html>

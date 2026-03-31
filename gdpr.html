@@ -28,7 +28,7 @@
   .nav-details .drop{position:fixed;top:68px;left:0;right:0;background:rgba(6,26,14,0.98);backdrop-filter:blur(12px);padding:2rem 5%;display:flex;flex-direction:column;gap:1.25rem;border-bottom:1px solid rgba(184,150,62,0.2);}
   .nav-details .drop a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:1rem;letter-spacing:0.05em;text-transform:uppercase;padding:0.25rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
   .nav-details .drop a:hover{color:#b8963e;}
-  @media(max-width:768px){.nav-links{display:none;}.nav-cta{display:none;}.nav-cta-sellers{display:none;}.nav-details{display:block;}}
+  @media(max-width:768px){.nav-links{display:none;}.nav-cta{display:none;}.nav-cta-sellers{display:none;}.nav-hamburger { display: flex; }}
   .page-hero{background:var(--navy);padding:140px 5% 60px;}
   .page-tag{font-size:0.72rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:10px;}
   .page-tag::before{content:'';display:block;width:32px;height:1px;background:var(--gold);}
@@ -152,7 +152,7 @@
   }
   .nav-details .drop a:hover { color: #b8963e; background: rgba(184,150,62,0.05); }
   @media (max-width: 768px) {
-    .nav-details { display: block; }
+    .nav-hamburger { display: flex; }
     .nav-cta { display: none !important; }
     .nav-links { display: none !important; }
   }
@@ -343,21 +343,23 @@
     <a href="sellers.html" class="nav-cta-sellers">List Your Project</a>
     <a href="index.html#contact" class="nav-cta">Get in Touch</a>
   </div>
-  <details class="nav-details">
-    <summary><span></span><span></span><span></span></summary>
-    <div class="drop">
-      <a href="index.html">Home</a>
-      <a href="index.html#philosophy">Strategy</a>
-      <a href="index.html#projects">Projects</a>
-      <a href="index.html#team">Team</a>
-      <a href="index.html#process">Process</a>
-      <a href="index.html#insights">Insights</a>
-      <a href="about.html">About</a>
-      <a href="sellers.html">List Your Project</a>
-      <a href="index.html#contact" style="color:var(--gold);font-weight:500;">Get in Touch</a>
-    </div>
-  </details>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="nav-mobile" id="navMobile">
+  <button class="nav-mobile-close" id="navClose">&times;</button>
+  <a href="index.html">Home</a>
+  <a href="index.html#philosophy">Strategy</a>
+  <a href="index.html#projects">Projects</a>
+  <a href="index.html#team">Team</a>
+  <a href="index.html#process">Process</a>
+  <a href="index.html#insights">Insights</a>
+  <a href="about.html">About</a>
+  <a href="sellers.html">List Your Project</a>
+  <a href="index.html#contact" style="color:#b8963e;font-weight:500;">Get in Touch</a>
+</div>
 
 
 
@@ -557,5 +559,36 @@ function cookieChoice(type) {
 </script>
 
   <script src="/pwa-init.js"></script>
+
+// Mobile nav
+(function() {
+  var btn = document.getElementById('navHamburger');
+  var nav = document.getElementById('navMobile');
+  var close = document.getElementById('navClose');
+  if (!btn || !nav) return;
+
+  btn.addEventListener('click', function() {
+    nav.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+  function closeNav() {
+    nav.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  if (close) close.addEventListener('click', closeNav);
+  nav.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      var href = a.getAttribute('href');
+      closeNav();
+      if (href && href.startsWith('#')) {
+        setTimeout(function() {
+          var el = document.querySelector(href);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 200);
+      }
+    });
+  });
+})();
+
 </body>
 </html>

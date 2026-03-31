@@ -38,7 +38,7 @@
     .nav-links{display:none;}
     .nav-cta{display:none;}
     .nav-cta-sellers{display:none;}
-    .nav-details{display:block;}
+    .nav-hamburger { display: flex; }
   }
 
   /* PAGE HERO */
@@ -163,20 +163,23 @@
     <a href="sellers.html" class="nav-cta-sellers">List Your Project</a>
     <a href="contact.html" class="nav-cta">Register as Investor</a>
   </div>
-  <details class="nav-details">
-    <summary><span></span><span></span><span></span></summary>
-    <div class="drop">
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="projects.html#bespoke">Bespoke Search</a>
-      <a href="index.html#process">Process</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="sellers.html">For Sellers</a>
-      <a href="contact.html" style="color:var(--gold);font-weight:500;">Register as Investor</a>
-    </div>
-  </details>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="nav-mobile" id="navMobile">
+  <button class="nav-mobile-close" id="navClose">&times;</button>
+  <a href="index.html">Home</a>
+  <a href="index.html#philosophy">Strategy</a>
+  <a href="index.html#projects">Projects</a>
+  <a href="index.html#team">Team</a>
+  <a href="index.html#process">Process</a>
+  <a href="index.html#insights">Insights</a>
+  <a href="about.html">About</a>
+  <a href="sellers.html">List Your Project</a>
+  <a href="index.html#contact" style="color:#b8963e;font-weight:500;">Get in Touch</a>
+</div>
 
 <section class="page-hero">
   <div class="page-hero-grid"></div>
@@ -331,6 +334,37 @@ function cookieChoice(type) {
   }
 }
 </script>
+
+
+// Mobile nav
+(function() {
+  var btn = document.getElementById('navHamburger');
+  var nav = document.getElementById('navMobile');
+  var close = document.getElementById('navClose');
+  if (!btn || !nav) return;
+
+  btn.addEventListener('click', function() {
+    nav.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+  function closeNav() {
+    nav.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  if (close) close.addEventListener('click', closeNav);
+  nav.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      var href = a.getAttribute('href');
+      closeNav();
+      if (href && href.startsWith('#')) {
+        setTimeout(function() {
+          var el = document.querySelector(href);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 200);
+      }
+    });
+  });
+})();
 
 </body>
 </html>
