@@ -168,18 +168,7 @@
   </div>
 </nav>
 
-<div class="nav-mobile" id="navMobile">
-  <button class="nav-mobile-close" id="navClose">&times;</button>
-  <a href="index.html">Home</a>
-  <a href="index.html#philosophy">Strategy</a>
-  <a href="index.html#projects">Projects</a>
-  <a href="index.html#team">Team</a>
-  <a href="index.html#process">Process</a>
-  <a href="index.html#insights">Insights</a>
-  <a href="about.html">About</a>
-  <a href="sellers.html">List Your Project</a>
-  <a href="index.html#contact" style="color:#b8963e;font-weight:500;">Get in Touch</a>
-</div>
+
 
 <div class="nav-mobile" id="navMobile">
   <button class="nav-mobile-close" id="navClose">&times;</button>
@@ -290,7 +279,7 @@
   <p>If you have any questions about our use of cookies, please contact us:</p>
   <div class="contact-box">
     <p><strong style="color:var(--gold);">Croatia Investments</strong></p>
-    <p>Email: <a href="mailto:info@croatia-investments.com">info@croatia-investments.com</a></p>
+    <p>Email: <a href="/cdn-cgi/l/email-protection#432a2d252c0320312c22372a226e2a2d352630372e262d37306d202c2e"><span class="__cf_email__" data-cfemail="99f0f7fff6d9faebf6f8edf0f8b4f0f7effceaedf4fcf7edeab7faf6f4">[email&#160;protected]</span></a></p>
     <p>Phone: +385 95 504 3770</p>
     <p>Address: Rijeka, Croatia</p>
   </div>
@@ -317,7 +306,7 @@
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function() {
   var consent = localStorage.getItem('ci-cookie-consent');
   if (!consent) {
@@ -368,16 +357,4 @@ function cookieChoice(type) {
   nav.querySelectorAll('a').forEach(function(a) {
     a.addEventListener('click', function() {
       var href = a.getAttribute('href');
-      closeNav();
-      if (href && href.startsWith('#')) {
-        setTimeout(function() {
-          var el = document.querySelector(href);
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }, 200);
-      }
-    });
-  });
-})();
-
-</body>
-</html>
+   
