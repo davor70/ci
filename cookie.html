@@ -124,7 +124,391 @@
   @media(max-width:480px){
     .legal-content h2{font-size:1.3rem;}
   }
-  .nav-mobile { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #061a0e; z-index: 9999; flex-direction: column; padding: 80px 5% 2rem; overflow-y: auto; }
+  .nav-mobile { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #061a0e; z-index: 9999; flex-direction: column; padding: 5rem 5% 2rem; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .nav-mobile.open { display: flex; }
+  .nav-mobile a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 1.1rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); display: block; }
+  .nav-mobile a:last-child { border-bottom: none; }
+  .nav-mobile-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 2.5rem; cursor: pointer; line-height: 1; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" style="text-decoration:none;display:flex;align-items:center;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" style="height:124px;width:auto;display:block;">
+      <defs>
+        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#e8d48a"/>
+          <stop offset="50%" style="stop-color:#d4a84c"/>
+          <stop offset="100%" style="stop-color:#b8922e"/>
+        </linearGradient>
+        <clipPath id="boxClip">
+          <rect x="34" y="34" width="92" height="92"/>
+        </clipPath>
+      </defs>
+      <rect x="34" y="34" width="92" height="92" fill="none" stroke="url(#goldGrad)" stroke-width="1.8"/>
+      <text x="65" y="107" font-family="Cormorant Garamond, Georgia, serif" font-size="76" font-weight="400" fill="#d4a84c" clip-path="url(#boxClip)" text-anchor="middle">C</text>
+      <text x="103" y="107" font-family="Cormorant Garamond, Georgia, serif" font-size="76" font-weight="400" fill="#ffffff" clip-path="url(#boxClip)" text-anchor="middle">I</text>
+      <line x1="146" y1="44" x2="146" y2="116" stroke="#b8963e" stroke-width="0.8" stroke-opacity="0.5"/>
+      <text x="162" y="72" font-family="Cormorant Garamond, Georgia, serif" font-size="28" font-weight="500" fill="#ffffff" letter-spacing="0.5">CROATIA</text>
+      <text x="162" y="100" font-family="Cormorant Garamond, Georgia, serif" font-size="28" font-weight="400" fill="#d4a84c" letter-spacing="0.5">INVESTMENTS</text>
+      <text x="162" y="120" font-family="Georgia, serif" font-size="8.5" font-weight="300" fill="#8a9ab0" letter-spacing="2.5" font-style="italic">PREMIUM DEVELOPMENT OPPORTUNITIES</text>
+      <line x1="162" y1="128" x2="372" y2="128" stroke="#b8963e" stroke-width="0.5" stroke-opacity="0.5"/>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="projects.html#bespoke">Bespoke</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:0.75rem;">
+    <a href="sellers.html" class="nav-cta-sellers">List Your Project</a>
+    <a href="contact.html" class="nav-cta">Register as Investor</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <button class="nav-mobile-close" id="navClose">&times;</button>
+  <a href="index.html">Home</a>
+  <a href="index.html#philosophy">Strategy</a>
+  <a href="index.html#projects">Projects</a>
+  <a href="index.html#team">Team</a>
+  <a href="index.html#process">Process</a>
+  <a href="index.html#insights">Insights</a>
+  <a href="about.html">About</a>
+  <a href="sellers.html">List Your Project</a>
+  <a href="index.html#contact" style="color:#b8963e;">Get in Touch</a>
+</div>
+
+
+
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-tag">Legal</div>
+  <h1>Cookie Policy</h1>
+  <p>This policy explains what cookies are, which cookies Croatia Investments uses, and how you can manage your preferences at any time.</p>
+</section>
+<div class="gold-divider"></div>
+
+<div class="legal-content">
+  <p class="legal-date">Last updated: March 2025</p>
+
+  <h2>What Are Cookies</h2>
+  <p>Cookies are small text files placed on your device when you visit a website. They are widely used to make websites work efficiently and to provide information to website owners. Cookies do not contain personally identifiable information on their own, but they may be linked to personal data we hold about you.</p>
+  <p>Cookies can be "session cookies" (deleted when you close your browser) or "persistent cookies" (which remain on your device for a set period or until you delete them). They can be set by the website you are visiting ("first-party cookies") or by third-party services embedded in that website.</p>
+
+  <h2>Cookies We Use</h2>
+  <p>We use a minimal set of cookies, grouped into two categories:</p>
+
+  <table class="cookie-table">
+    <thead>
+      <tr>
+        <th>Cookie Name</th>
+        <th>Type</th>
+        <th>Purpose</th>
+        <th>Duration</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>ci-cookie-consent</code></td>
+        <td><span class="badge badge-essential">Essential</span></td>
+        <td>Stores your cookie preference so you are not asked again on every visit.</td>
+        <td>12 months</td>
+      </tr>
+      <tr>
+        <td><code>ci-session</code></td>
+        <td><span class="badge badge-essential">Essential</span></td>
+        <td>Maintains your browsing session and enables core site functionality.</td>
+        <td>Session</td>
+      </tr>
+      <tr>
+        <td><code>_ga</code>, <code>_ga_*</code></td>
+        <td><span class="badge badge-analytics">Analytics</span></td>
+        <td>Google Analytics cookies used to distinguish users and measure site usage in aggregate. Set only with your consent.</td>
+        <td>2 years</td>
+      </tr>
+      <tr>
+        <td><code>_gid</code></td>
+        <td><span class="badge badge-analytics">Analytics</span></td>
+        <td>Google Analytics cookie used to distinguish users across sessions. Set only with your consent.</td>
+        <td>24 hours</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Essential Cookies</h2>
+  <p>Essential cookies are strictly necessary for the website to function. They enable core features such as security, session management, and your cookie consent preferences. These cookies cannot be disabled — without them, the website cannot operate correctly.</p>
+  <p>We do not use essential cookies to track you or to serve advertising.</p>
+
+  <h2>Analytics Cookies</h2>
+  <p>With your consent, we use Google Analytics to understand how visitors interact with our website in aggregate — for example, which pages are most visited, how long users stay, and from which countries visitors arrive. This information helps us improve the site.</p>
+  <p>Analytics data is anonymised and aggregated. We do not use it to identify individual visitors. You can opt out at any time using the preference controls below, or by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.</p>
+  <p>We do not use cookies for advertising, retargeting, or profiling purposes.</p>
+
+  <h2>Third-Party Cookies</h2>
+  <p>Our website does not embed third-party social media widgets, advertising networks, or tracking pixels that set cookies independently. The only third-party cookies we may set (with your consent) are Google Analytics cookies, governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>
+
+  <h2>How to Manage Your Preferences</h2>
+  <p>You can update your cookie preferences at any time using the controls below. Choosing "Essential Only" will remove any previously set analytics cookies from your browser.</p>
+
+  <div class="pref-box">
+    <p><strong style="color:var(--gold);">Your Cookie Preferences</strong></p>
+    <p id="pref-status">Your current preference: <strong id="current-pref" style="color:var(--gold-light);">Not yet set</strong></p>
+    <p>Choose which cookies you allow. Essential cookies are always active.</p>
+    <div class="pref-actions">
+      <button class="pref-btn-essential" onclick="cookieChoice('essential')">Essential Only</button>
+      <button class="pref-btn-accept" onclick="cookieChoice('all')">Accept All Cookies</button>
+    </div>
+  </div>
+
+  <h2>Browser-Level Controls</h2>
+  <p>You can also control cookies through your browser settings. Most browsers allow you to view, delete, and block cookies from specific websites. Please note that blocking all cookies may affect website functionality. For guidance, visit your browser's help pages:</p>
+  <ul>
+    <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+    <li><a href="https://support.mozilla.org/en-US/kb/enable-and-disable-cookies-website-preferences" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+    <li><a href="https://support.apple.com/guide/safari/manage-cookies-sfri11471/mac" target="_blank" rel="noopener">Apple Safari</a></li>
+    <li><a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener">Microsoft Edge</a></li>
+  </ul>
+
+  <h2>Changes to This Policy</h2>
+  <p>We may update this Cookie Policy from time to time to reflect changes in technology, legislation, or our data practices. The date at the top of this page shows when it was last revised. We encourage you to review this page periodically.</p>
+
+  <h2>Contact</h2>
+  <p>If you have any questions about our use of cookies, please contact us:</p>
+  <div class="contact-box">
+    <p><strong style="color:var(--gold);">Croatia Investments</strong></p>
+    <p>Email: <a href="/cdn-cgi/l/email-protection#1b72757d745b7869747a6f727a3672756d7e686f767e756f6835787476"><span class="__cf_email__" data-cfemail="9df4f3fbf2ddfeeff2fce9f4fcb0f4f3ebf8eee9f0f8f3e9eeb3fef2f0">[email&#160;protected]</span></a></p>
+    <p>Phone: +385 95 504 3770</p>
+    <p>Address: Rijeka, Croatia</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Croatia Investments. All rights reserved.</div>
+    <div class="footer-nav">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="cookie.html">Cookie Policy</a>
+      <a href="gdpr.html">GDPR</a>
+    </div>
+  </div>
+</footer>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner">
+  <p>We use cookies — to keep the site running and to understand how you use it. Analytics cookies are only set with your consent. <a href="cookie.html">Learn more</a></p>
+  <div class="cookie-actions">
+    <button class="cookie-btn-essential" onclick="cookieChoice('essential')">Essential Only</button>
+    <button class="cookie-btn-accept" onclick="cookieChoice('all')">Accept All</button>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+(function() {
+  var consent = localStorage.getItem('ci-cookie-consent');
+  if (!consent) {
+    document.getElementById('cookie-banner').style.display = 'flex';
+  }
+  // Show current preference on page
+  var prefEl = document.getElementById('current-pref');
+  if (prefEl) {
+    if (consent === 'all') prefEl.textContent = 'Accept All Cookies';
+    else if (consent === 'essential') prefEl.textContent = 'Essential Only';
+    else prefEl.textContent = 'Not yet set';
+  }
+})();
+</script>
+
+<script>
+function cookieChoice(type) {
+  localStorage.setItem('ci-cookie-consent', type);
+  // Update banner
+  var b = document.getElementById('cookie-banner');
+  b.style.transition = 'opacity 0.3s, transform 0.3s';
+  b.style.opacity = '0';
+  b.style.transform = 'translateY(20px)';
+  setTimeout(function() { b.style.display = 'none'; }, 320);
+  // Update preference display
+  var prefEl = document.getElementById('current-pref');
+  if (prefEl) {
+    prefEl.textContent = type === 'all' ? 'Accept All Cookies' : 'Essential Only';
+  }
+}
+</script>
+
+
+<script>
+// Mobile nav
+(function() {
+  var btn = document.getElementById('navHamburger');
+  var nav = document.getElementById('navMobile');
+  var close = document.getElementById('navClose');
+  if (!btn || !nav) return;
+
+  function openNav() {
+    nav.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeNav() {
+    nav.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  btn.addEventListener('click', openNav);
+  btn.addEventListener('touchstart', function(e) { e.preventDefault(); openNav(); }, { passive: false });
+
+  if (close) {
+    close.addEventListener('click', closeNav);
+    close.addEventListener('touchstart', function(e) { e.preventDefault(); closeNav(); }, { passive: false });
+  }
+
+  nav.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      var href = a.getAttribute('href');
+      closeNav();
+      if (href && href.startsWith('#')) {
+        setTimeout(function() {
+          var el = document.querySelector(href);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 200);
+      }
+    });
+  });
+})();
+</script>E html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookie Policy — Croatia Investments</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#061a0e;--gold:#b8963e;--gold-light:#d4af6a;--cream:#f0ede7;--white:#ffffff;--gray:#7a9485;--gray-light:#d0ddd4;--text:#1a2e1e;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,26,14,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(184,150,62,0.2);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:100px;}
+  @media(max-width:768px){nav{height:68px;padding:0 4%;}}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:500;color:var(--white);text-decoration:none;}
+  .nav-logo span{color:var(--gold);}
+  .nav-links{display:flex;gap:2.5rem;list-style:none;}
+  .nav-links a{color:var(--gray);text-decoration:none;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:9px 24px;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.25s;text-decoration:none;}
+  .nav-cta:hover{background:var(--gold);color:var(--navy);}
+  .nav-cta-sellers{background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);padding:9px 20px;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.25s;white-space:nowrap;}
+  .nav-cta-sellers:hover{border-color:rgba(255,255,255,0.5);color:var(--white);}
+
+  /* HAMBURGER */
+  .nav-details{display:none;position:relative;z-index:300;}
+  .nav-details summary{list-style:none;cursor:pointer;width:40px;height:40px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;}
+  .nav-details summary::-webkit-details-marker{display:none;}
+  .nav-details summary span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:all 0.3s;}
+  .nav-details .drop{position:fixed;top:68px;left:0;right:0;background:rgba(6,26,14,0.98);backdrop-filter:blur(12px);padding:2rem 5%;display:flex;flex-direction:column;gap:1.25rem;border-bottom:1px solid rgba(184,150,62,0.2);}
+  .nav-details .drop a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:1rem;letter-spacing:0.05em;text-transform:uppercase;padding:0.25rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+  .nav-details .drop a:hover{color:var(--gold);}
+
+  @media(max-width:768px){
+    .nav-links{display:none;}
+    .nav-cta{display:none;}
+    .nav-cta-sellers{display:none;}
+    .nav-hamburger { display: flex; }
+  }
+
+  /* PAGE HERO */
+  .page-hero{background:var(--navy);padding:140px 5% 60px;position:relative;overflow:hidden;}
+  .page-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(184,150,62,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(184,150,62,0.04) 1px,transparent 1px);background-size:60px 60px;}
+  .page-tag{font-size:0.72rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:10px;position:relative;}
+  .page-tag::before{content:'';display:block;width:32px;height:1px;background:var(--gold);}
+  .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:300;color:var(--white);position:relative;}
+  .page-hero p{font-size:0.95rem;font-weight:300;color:rgba(255,255,255,0.55);max-width:580px;margin-top:1rem;line-height:1.75;position:relative;}
+
+  .gold-divider{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+
+  /* LEGAL CONTENT */
+  .legal-content{max-width:800px;margin:0 auto;padding:80px 5%;}
+  .legal-content h2{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:#0b2214;margin:2.5rem 0 1rem;padding-top:2rem;border-top:1px solid var(--gray-light);}
+  .legal-content h2:first-child{border-top:none;margin-top:0;padding-top:0;}
+  .legal-content p{font-size:0.9rem;line-height:1.85;color:var(--text);margin-bottom:1rem;}
+  .legal-content ul{margin:0.5rem 0 1rem 1.5rem;}
+  .legal-content ul li{font-size:0.9rem;line-height:1.85;color:var(--text);margin-bottom:0.4rem;}
+  .legal-date{font-size:0.78rem;color:var(--gray);margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--gray-light);}
+
+  /* COOKIE TABLE */
+  .cookie-table{width:100%;border-collapse:collapse;margin:1.5rem 0;}
+  .cookie-table th{font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);background:var(--gray-light);padding:10px 14px;text-align:left;border-bottom:2px solid rgba(184,150,62,0.3);}
+  .cookie-table td{font-size:0.85rem;color:var(--text);padding:10px 14px;border-bottom:1px solid var(--gray-light);vertical-align:top;line-height:1.6;}
+  .cookie-table tr:last-child td{border-bottom:none;}
+  .cookie-table tr:hover td{background:rgba(0,0,0,0.02);}
+  .badge{display:inline-block;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:2px 8px;border-radius:2px;font-weight:500;}
+  .badge-essential{background:rgba(184,150,62,0.15);color:#7a5e20;border:1px solid rgba(184,150,62,0.3);}
+  .badge-analytics{background:rgba(26,46,30,0.08);color:#2a4a2e;border:1px solid rgba(26,46,30,0.15);}
+
+  /* PREFERENCE BOX */
+  .pref-box{background:var(--navy);padding:32px 36px;margin-top:2rem;border-left:2px solid var(--gold);}
+  .pref-box p{color:rgba(255,255,255,0.7);font-size:0.88rem;line-height:1.75;margin-bottom:1rem;}
+  .pref-box a{color:var(--gold);text-decoration:none;}
+  .pref-box a:hover{color:var(--gold-light);}
+  .pref-actions{display:flex;gap:0.75rem;flex-wrap:wrap;}
+  .pref-btn-essential{background:transparent;border:1px solid rgba(184,150,62,0.4);color:rgba(255,255,255,0.7);padding:9px 20px;font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+  .pref-btn-essential:hover{border-color:rgba(184,150,62,0.8);color:#fff;}
+  .pref-btn-accept{background:#b8963e;border:1px solid #b8963e;color:#061a0e;padding:9px 20px;font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+  .pref-btn-accept:hover{background:#d4af6a;border-color:#d4af6a;}
+
+  /* CONTACT BOX */
+  .contact-box{background:var(--navy);padding:32px 36px;margin-top:2rem;border-left:2px solid var(--gold);}
+  .contact-box p{color:rgba(255,255,255,0.7);font-size:0.88rem;line-height:1.75;margin-bottom:0.5rem;}
+  .contact-box a{color:var(--gold);text-decoration:none;}
+
+  /* FOOTER */
+  footer{background:var(--navy);border-top:1px solid rgba(184,150,62,0.15);padding:40px 5%;}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+  .footer-copy{font-size:0.75rem;color:rgba(255,255,255,0.25);}
+  .footer-nav{display:flex;gap:2rem;}
+  .footer-nav a{font-size:0.75rem;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s;}
+  .footer-nav a:hover{color:var(--white);}
+
+  /* COOKIE BANNER */
+  #cookie-banner{display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(6,26,14,0.97);backdrop-filter:blur(12px);border-top:1px solid rgba(184,150,62,0.25);padding:16px 5%;flex-direction:row;align-items:center;justify-content:space-between;gap:1.5rem;}
+  #cookie-banner p{font-size:0.82rem;color:rgba(255,255,255,0.65);line-height:1.6;max-width:680px;}
+  #cookie-banner a{color:var(--gold);}
+  .cookie-actions{display:flex;gap:0.75rem;flex-shrink:0;}
+  .cookie-btn-essential{background:transparent;border:1px solid rgba(184,150,62,0.4);color:rgba(255,255,255,0.7);padding:8px 20px;font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+  .cookie-btn-essential:hover{border-color:rgba(184,150,62,0.8);color:#fff;}
+  .cookie-btn-accept{background:#b8963e;border:1px solid #b8963e;color:#061a0e;padding:8px 20px;font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+  .cookie-btn-accept:hover{background:#d4af6a;border-color:#d4af6a;}
+
+  @media(max-width:768px){
+    .nav-links{display:none;}
+    .legal-content{padding:50px 4%;}
+    .page-hero{padding:120px 4% 50px;}
+    .page-hero h1{font-size:2rem;}
+    .footer-nav{flex-wrap:wrap;gap:1rem;justify-content:center;}
+    .footer-bottom{flex-direction:column;text-align:center;}
+    .cookie-table{font-size:0.78rem;}
+    .cookie-table th,.cookie-table td{padding:8px 10px;}
+  }
+  @media(max-width:640px){
+    #cookie-banner{flex-direction:column;align-items:flex-start;padding:16px 4%;}
+    .cookie-actions{width:100%;}
+    .cookie-btn-essential,.cookie-btn-accept{flex:1;text-align:center;}
+    .pref-actions{flex-direction:column;}
+    .pref-btn-essential,.pref-btn-accept{text-align:center;}
+  }
+  @media(max-width:480px){
+    .legal-content h2{font-size:1.3rem;}
+  }
+  .nav-mobile { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #061a0e; z-index: 9999; flex-direction: column; padding: 5rem 5% 2rem; overflow-y: auto; -webkit-overflow-scrolling: touch; }
   .nav-mobile.open { display: flex; }
   .nav-mobile a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 1.1rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); display: block; }
   .nav-mobile a:last-child { border-bottom: none; }

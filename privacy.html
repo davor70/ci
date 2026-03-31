@@ -293,7 +293,7 @@
   }
 
   html, body { overflow-x: hidden; max-width: 100%; }
-  .nav-mobile { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #061a0e; z-index: 9999; flex-direction: column; padding: 80px 5% 2rem; overflow-y: auto; }
+  .nav-mobile { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #061a0e; z-index: 9999; flex-direction: column; padding: 5rem 5% 2rem; overflow-y: auto; -webkit-overflow-scrolling: touch; }
   .nav-mobile.open { display: flex; }
   .nav-mobile a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 1.1rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); display: block; }
   .nav-mobile a:last-child { border-bottom: none; }
@@ -582,15 +582,23 @@ function cookieChoice(type) {
   var close = document.getElementById('navClose');
   if (!btn || !nav) return;
 
-  btn.addEventListener('click', function() {
+  function openNav() {
     nav.classList.add('open');
     document.body.style.overflow = 'hidden';
-  });
+  }
   function closeNav() {
     nav.classList.remove('open');
     document.body.style.overflow = '';
   }
-  if (close) close.addEventListener('click', closeNav);
+
+  btn.addEventListener('click', openNav);
+  btn.addEventListener('touchstart', function(e) { e.preventDefault(); openNav(); }, { passive: false });
+
+  if (close) {
+    close.addEventListener('click', closeNav);
+    close.addEventListener('touchstart', function(e) { e.preventDefault(); closeNav(); }, { passive: false });
+  }
+
   nav.querySelectorAll('a').forEach(function(a) {
     a.addEventListener('click', function() {
       var href = a.getAttribute('href');
