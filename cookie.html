@@ -14,7 +14,6 @@
   body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
 
   nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,26,14,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(184,150,62,0.2);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:100px;}
-  @media(max-width:768px){nav{height:68px;padding:0 4%;}}
   .nav-logo{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:500;color:var(--white);text-decoration:none;}
   .nav-logo span{color:var(--gold);}
   .nav-links{display:flex;gap:2.5rem;list-style:none;}
@@ -129,6 +128,16 @@
   .nav-mobile a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 1.1rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); display: block; }
   .nav-mobile a:last-child { border-bottom: none; }
   .nav-mobile-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 2.5rem; cursor: pointer; line-height: 1; }
+
+  /* ─── NAV RESPONSIVE ─── */
+  @media(max-width:1024px){
+    nav { height: 68px; padding: 0 4%; }
+    nav svg { height: 52px !important; }
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .nav-cta-sellers { display: none; }
+    .nav-hamburger { display: flex !important; }
+  }
 </style>
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#061a0e">
@@ -375,7 +384,6 @@ function closeNav() {
   body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
 
   nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,26,14,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(184,150,62,0.2);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:100px;}
-  @media(max-width:768px){nav{height:68px;padding:0 4%;}}
   .nav-logo{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:500;color:var(--white);text-decoration:none;}
   .nav-logo span{color:var(--gold);}
   .nav-links{display:flex;gap:2.5rem;list-style:none;}
