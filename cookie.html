@@ -167,13 +167,13 @@
   <div style="display:flex;align-items:center;gap:0.75rem;">
     <a href="sellers.html" class="nav-cta-sellers">List Your Project</a>
     <a href="contact.html" class="nav-cta">Register as Investor</a>
-  <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+  <button class="nav-hamburger" onclick="openNav()">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
-<div class="nav-mobile" id="navMobile">
-  <button class="nav-mobile-close" id="navClose">&times;</button>
+<div id="navMobile" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#061a0e;z-index:9999;flex-direction:column;padding:5rem 5% 2rem;overflow-y:auto;">
+  <button class="nav-mobile-close" onclick="closeNav()">&times;</button>
   <a href="index.html">Home</a>
   <a href="index.html#philosophy">Strategy</a>
   <a href="index.html#projects">Projects</a>
@@ -345,43 +345,14 @@ function cookieChoice(type) {
 
 
 <script>
-// Mobile nav
-(function() {
-  var btn = document.getElementById('navHamburger');
-  var nav = document.getElementById('navMobile');
-  var close = document.getElementById('navClose');
-  if (!btn || !nav) return;
-
-  function openNav() {
-    nav.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeNav() {
-    nav.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  btn.addEventListener('click', openNav);
-  btn.addEventListener('touchstart', function(e) { e.preventDefault(); openNav(); }, { passive: false });
-
-  if (close) {
-    close.addEventListener('click', closeNav);
-    close.addEventListener('touchstart', function(e) { e.preventDefault(); closeNav(); }, { passive: false });
-  }
-
-  nav.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', function() {
-      var href = a.getAttribute('href');
-      closeNav();
-      if (href && href.startsWith('#')) {
-        setTimeout(function() {
-          var el = document.querySelector(href);
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }, 200);
-      }
-    });
-  });
-})();
+function openNav() {
+  document.getElementById('navMobile').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeNav() {
+  document.getElementById('navMobile').style.display = 'none';
+  document.body.style.overflow = '';
+}
 </script>E html>
 <html lang="en">
 <head>
@@ -551,13 +522,13 @@ function cookieChoice(type) {
   <div style="display:flex;align-items:center;gap:0.75rem;">
     <a href="sellers.html" class="nav-cta-sellers">List Your Project</a>
     <a href="contact.html" class="nav-cta">Register as Investor</a>
-  <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+  <button class="nav-hamburger" onclick="openNav()">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
-<div class="nav-mobile" id="navMobile">
-  <button class="nav-mobile-close" id="navClose">&times;</button>
+<div id="navMobile" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#061a0e;z-index:9999;flex-direction:column;padding:5rem 5% 2rem;overflow-y:auto;">
+  <button class="nav-mobile-close" onclick="closeNav()">&times;</button>
   <a href="index.html">Home</a>
   <a href="index.html#philosophy">Strategy</a>
   <a href="index.html#projects">Projects</a>
