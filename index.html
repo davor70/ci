@@ -44,17 +44,6 @@
     overflow-x: hidden;
   }
 
-  /* ─── NOISE TEXTURE OVERLAY ─── */
-  body::before {
-    content: '';
-    position: fixed; inset: 0; z-index: 0;
-    opacity: 0.015;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: 128px;
-  }
-
   /* ─── NAV ─── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -308,7 +297,7 @@
   .section-h2 em { font-style: italic; color: var(--gold-light); }
 
   /* ─── SECTION 2: PHILOSOPHY ─── */
-  #philosophy { background: var(--cream); position: relative; z-index: 1; }
+  #philosophy { background: #f0ede7 !important; position: relative; isolation: isolate; }
 
   .philosophy-grid {
     display: grid;
@@ -358,7 +347,7 @@
   }
 
   /* ─── SECTION 3: PROJECTS ─── */
-  #projects { background: var(--cream-mid); position: relative; z-index: 1; }
+  #projects { background: #e8e4dd !important; position: relative; isolation: isolate; }
 
   .projects-intro {
     font-size: 1rem;
@@ -468,7 +457,7 @@
   .project-cta:hover { gap: 0.9rem; }
 
   /* ─── SECTION 4: TEAM ─── */
-  #team { background: var(--cream); position: relative; z-index: 1; }
+  #team { background: #f0ede7 !important; position: relative; isolation: isolate; }
 
   .team-grid {
     display: grid;
@@ -747,7 +736,7 @@
   }
 
   /* ─── SECTION 6: INSIGHTS ─── */
-  #insights { background: var(--cream-mid); position: relative; z-index: 1; }
+  #insights { background: #e8e4dd !important; position: relative; isolation: isolate; }
 
   .insights-grid {
     display: grid;
