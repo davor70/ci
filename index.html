@@ -21,6 +21,14 @@
     --white-dim: rgba(245,242,236,0.65);
     --white-faint: rgba(245,242,236,0.12);
     --text-body: rgba(245,242,236,0.82);
+
+  /* ─── LIGHT SECTIONS ─── */
+  --cream: #f0ede7;
+  --cream-mid: #e8e4dd;
+  --cream-border: #d8d3cb;
+  --text-dark: #0f2318;
+  --text-dark-dim: rgba(15,35,24,0.65);
+  --text-dark-body: rgba(15,35,24,0.78);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -300,7 +308,7 @@
   .section-h2 em { font-style: italic; color: var(--gold-light); }
 
   /* ─── SECTION 2: PHILOSOPHY ─── */
-  #philosophy { background: var(--navy-mid); }
+  #philosophy { background: var(--cream); }
 
   .philosophy-grid {
     display: grid;
@@ -311,7 +319,7 @@
 
   .philosophy-text p {
     font-size: 1rem;
-    color: var(--text-body);
+    color: var(--text-dark-body);
     line-height: 1.85;
     margin-bottom: 1.25rem;
   }
@@ -322,10 +330,10 @@
   .target-item {
     display: flex; align-items: flex-start; gap: 1.25rem;
     padding: 1.4rem 0;
-    border-bottom: 1px solid var(--navy-border);
+    border-bottom: 1px solid var(--cream-border);
     transition: background 0.2s;
   }
-  .target-item:first-child { border-top: 1px solid var(--navy-border); }
+  .target-item:first-child { border-top: 1px solid var(--cream-border); }
 
   .target-num {
     font-family: 'DM Mono', monospace;
@@ -338,23 +346,23 @@
 
   .target-text {
     font-size: 0.92rem;
-    color: var(--text-body);
+    color: var(--text-dark-body);
     line-height: 1.5;
   }
   .target-text strong {
     display: block;
     font-weight: 500;
-    color: var(--white);
+    color: var(--text-dark);
     font-size: 0.95rem;
     margin-bottom: 0.2rem;
   }
 
   /* ─── SECTION 3: PROJECTS ─── */
-  #projects { background: var(--navy); }
+  #projects { background: var(--cream-mid); }
 
   .projects-intro {
     font-size: 1rem;
-    color: var(--text-body);
+    color: var(--text-dark-body);
     max-width: 640px;
     margin-bottom: 4rem;
     line-height: 1.8;
@@ -364,12 +372,12 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1px;
-    background: var(--navy-border);
+    background: var(--cream-border);
     margin-bottom: 3rem;
   }
 
   .project-card {
-    background: var(--navy-mid);
+    background: #fff;
     padding: 2.5rem;
     position: relative;
     transition: background 0.3s;
@@ -383,7 +391,7 @@
     opacity: 0;
     transition: opacity 0.3s;
   }
-  .project-card:hover { background: var(--navy-light); }
+  .project-card:hover { background: var(--cream); }
   .project-card:hover::before { opacity: 1; }
 
   .project-type {
@@ -406,7 +414,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.6rem;
     font-weight: 400;
-    color: var(--white);
+    color: var(--text-dark);
     line-height: 1.2;
     margin-bottom: 1.75rem;
   }
@@ -418,20 +426,20 @@
   .spec-row {
     display: flex; justify-content: space-between; align-items: baseline;
     padding: 0.65rem 0;
-    border-bottom: 1px solid var(--navy-border);
+    border-bottom: 1px solid var(--cream-border);
     gap: 1rem;
   }
-  .spec-row:first-child { border-top: 1px solid var(--navy-border); }
+  .spec-row:first-child { border-top: 1px solid var(--cream-border); }
   .spec-label {
     font-size: 0.68rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--white-dim);
+    color: var(--text-dark-dim);
     flex-shrink: 0;
   }
   .spec-value {
     font-size: 0.88rem;
-    color: var(--white);
+    color: var(--text-dark);
     font-weight: 400;
     text-align: right;
   }
@@ -460,18 +468,18 @@
   .project-cta:hover { gap: 0.9rem; }
 
   /* ─── SECTION 4: TEAM ─── */
-  #team { background: var(--navy-mid); }
+  #team { background: var(--cream); }
 
   .team-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2px;
-    background: var(--navy-border);
+    background: var(--cream-border);
     margin-top: 3rem;
   }
 
   .team-card {
-    background: var(--navy-mid);
+    background: #fff;
     padding: 3rem;
     position: relative;
   }
@@ -494,14 +502,14 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.8rem;
     font-weight: 400;
-    color: var(--white);
+    color: var(--text-dark);
     margin-bottom: 1.25rem;
     line-height: 1.2;
   }
 
   .team-bio {
     font-size: 0.88rem;
-    color: var(--text-body);
+    color: var(--text-dark-body);
     line-height: 1.75;
     margin-bottom: 1.5rem;
   }
@@ -511,7 +519,7 @@
     font-size: 0.7rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--white-dim);
+    color: var(--text-dark-dim);
     text-decoration: none;
     transition: color 0.25s;
   }
@@ -586,18 +594,18 @@
   }
 
   /* ─── SECTION 6: INSIGHTS ─── */
-  #insights { background: var(--navy-mid); }
+  #insights { background: var(--cream-mid); }
 
   .insights-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2px;
-    background: var(--navy-border);
+    background: var(--cream-border);
     margin-top: 3rem;
   }
 
   .insight-card {
-    background: var(--navy-mid);
+    background: #fff;
     padding: 2.5rem;
     cursor: pointer;
     transition: background 0.3s;
@@ -608,10 +616,10 @@
     content: '';
     position: absolute; bottom: 0; left: 0; right: 0;
     height: 0;
-    background: linear-gradient(to top, var(--gold-muted), transparent);
+    background: linear-gradient(to top, rgba(184,150,62,0.08), transparent);
     transition: height 0.4s;
   }
-  .insight-card:hover { background: var(--navy-light); }
+  .insight-card:hover { background: var(--cream); }
   .insight-card:hover::after { height: 100%; }
 
   .insight-tag {
@@ -626,7 +634,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.3rem;
     font-weight: 400;
-    color: var(--white);
+    color: var(--text-dark);
     line-height: 1.35;
     margin-bottom: 1rem;
     position: relative; z-index: 1;
@@ -634,7 +642,7 @@
 
   .insight-excerpt {
     font-size: 0.82rem;
-    color: var(--text-body);
+    color: var(--text-dark-body);
     line-height: 1.7;
     position: relative; z-index: 1;
   }
@@ -824,6 +832,43 @@
     background: var(--gold);
     margin: 2rem 0;
   }
+
+
+  /* ─── LIGHT SECTION OVERRIDES ─── */
+
+  /* Headings & labels */
+  #philosophy .section-h2, #philosophy .section-label,
+  #projects .section-h2, #projects .section-label,
+  #team .section-h2, #team .section-label,
+  #insights .section-h2, #insights .section-label { color: var(--text-dark); }
+
+  #philosophy .section-h2 em, #projects .section-h2 em,
+  #team .section-h2 em, #insights .section-h2 em { color: var(--gold); }
+
+  #philosophy .section-label::before, #projects .section-label::before,
+  #team .section-label::before, #insights .section-label::before { background: var(--gold); }
+
+  /* btn-ghost on light background (Philosophy) */
+  #philosophy .btn-ghost {
+    border-color: rgba(15,35,24,0.25);
+    color: var(--text-dark-dim);
+  }
+  #philosophy .btn-ghost:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* gold-divider on light background */
+  #philosophy .gold-divider { background: var(--gold); }
+
+  /* Projects note text */
+  #projects p[style*="font-size:0.8rem"] { color: var(--text-dark-dim) !important; }
+
+  /* Team body text */
+  #team p { color: var(--text-dark-body); }
+
+  /* Spec value gold on white card */
+  .spec-value.gold { color: var(--gold); }
 
   /* ─── SCROLL FADE ─── */
   .reveal {
