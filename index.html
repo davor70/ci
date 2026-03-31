@@ -833,6 +833,153 @@
     margin: 2rem 0;
   }
 
+  /* ─── TEASER MODAL ─── */
+  .teaser-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 500;
+    background: rgba(4,12,6,0.75);
+    backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .teaser-overlay.open { display: flex; }
+
+  .teaser-modal {
+    background: var(--navy-mid);
+    border: 1px solid var(--navy-border);
+    max-width: 520px;
+    width: 100%;
+    position: relative;
+    animation: modalIn 0.3s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  .teaser-header {
+    background: var(--navy);
+    padding: 2rem 2.5rem 1.75rem;
+    border-bottom: 1px solid var(--navy-border);
+    position: relative;
+  }
+  .teaser-header-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .teaser-header-tag::before {
+    content: '';
+    display: block;
+    width: 20px; height: 1px;
+    background: var(--gold);
+  }
+  .teaser-project-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  .teaser-project-type {
+    font-size: 0.75rem;
+    color: var(--white-dim);
+    margin-top: 0.3rem;
+    letter-spacing: 0.05em;
+  }
+  .teaser-close {
+    position: absolute; top: 1.25rem; right: 1.5rem;
+    background: none; border: none;
+    color: var(--white-dim);
+    font-size: 1.4rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+  }
+  .teaser-close:hover { color: var(--white); }
+
+  .teaser-body {
+    padding: 2rem 2.5rem 2.5rem;
+  }
+  .teaser-intro {
+    font-size: 0.85rem;
+    color: var(--white-dim);
+    line-height: 1.7;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--navy-border);
+  }
+  .teaser-intro strong { color: var(--gold); font-weight: 400; }
+
+  .teaser-form-group {
+    margin-bottom: 1rem;
+  }
+  .teaser-form-group label {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    margin-bottom: 0.4rem;
+  }
+  .teaser-form-group input,
+  .teaser-form-group select {
+    width: 100%;
+    background: var(--navy);
+    border: 1px solid var(--navy-border);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: border-color 0.25s;
+    appearance: none;
+  }
+  .teaser-form-group input:focus,
+  .teaser-form-group select:focus { border-color: var(--gold); }
+  .teaser-form-group input::placeholder { color: rgba(245,242,236,0.25); }
+  .teaser-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+
+  .teaser-nda-note {
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    background: rgba(184,150,62,0.08);
+    border: 1px solid rgba(184,150,62,0.2);
+    padding: 0.85rem 1rem;
+    margin: 1.25rem 0;
+  }
+  .teaser-nda-note svg { flex-shrink: 0; margin-top: 1px; }
+  .teaser-nda-note span {
+    font-size: 0.75rem;
+    color: var(--white-dim);
+    line-height: 1.55;
+  }
+
+  .teaser-submit {
+    width: 100%;
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 1rem;
+    cursor: pointer;
+    transition: background 0.25s;
+  }
+  .teaser-submit:hover { background: var(--gold-light); }
+
+  @media (max-width: 560px) {
+    .teaser-modal { margin: 0; }
+    .teaser-header, .teaser-body { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .teaser-form-row { grid-template-columns: 1fr; }
+  }
+
 
   /* ─── LIGHT SECTION OVERRIDES ─── */
 
@@ -1113,7 +1260,7 @@
             <span class="spec-value">36 months</span>
           </div>
         </div>
-        <a href="#contact" class="project-cta">
+        <a href="#" class="project-cta" onclick="openTeaserModal('Zagreb — Central District', 'Residential Development');return false;">
           Request Teaser
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#b8963e" stroke-width="1.2" stroke-linecap="round"/></svg>
         </a>
@@ -1146,7 +1293,7 @@
             <span class="spec-value">48 months</span>
           </div>
         </div>
-        <a href="#contact" class="project-cta">
+        <a href="#" class="project-cta" onclick="openTeaserModal('Split — Coastal Zone', 'Mixed-Use Development');return false;">
           Request Teaser
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#b8963e" stroke-width="1.2" stroke-linecap="round"/></svg>
         </a>
@@ -1179,7 +1326,7 @@
             <span class="spec-value">42 months</span>
           </div>
         </div>
-        <a href="#contact" class="project-cta">
+        <a href="#" class="project-cta" onclick="openTeaserModal('Dalmatian Islands', 'Tourism Asset');return false;">
           Request Teaser
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#b8963e" stroke-width="1.2" stroke-linecap="round"/></svg>
         </a>
@@ -1429,6 +1576,83 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   revealEls.forEach(el => observer.observe(el));
+
+  // Teaser modal
+  function openTeaserModal(projectName, projectType) {
+    document.getElementById('teaserProjectName').textContent = projectName;
+    document.getElementById('teaserProjectType').textContent = projectType;
+    document.getElementById('teaserOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeTeaserModal(e) {
+    if (e && e.target !== document.getElementById('teaserOverlay')) return;
+    document.getElementById('teaserOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function submitTeaserForm() {
+    const overlay = document.getElementById('teaserOverlay');
+    const body = overlay.querySelector('.teaser-body');
+    const project = document.getElementById('teaserProjectName').textContent;
+    body.innerHTML = `
+      <div style="text-align:center;padding:2rem 0;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#b8963e" stroke-width="1.2" style="margin-bottom:1.5rem;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10" stroke="#b8963e" stroke-width="1.5"/></svg>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:#f5f2ec;margin-bottom:0.75rem;">Request Received</div>
+        <p style="font-size:0.85rem;color:rgba(245,242,236,0.6);line-height:1.7;max-width:340px;margin:0 auto 2rem;">
+          Your inquiry for <strong style="color:#b8963e;">${project}</strong> has been registered. You will receive the investment teaser and NDA within 24 hours.
+        </p>
+        <button onclick="closeTeaserModal(null)" style="background:#b8963e;color:#061a0e;border:none;font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:0.85rem 2rem;cursor:pointer;">Close</button>
+      </div>`;
+  }
 </script>
+<!-- ═══ TEASER MODAL ═══ -->
+<div class="teaser-overlay" id="teaserOverlay" onclick="closeTeaserModal(event)">
+  <div class="teaser-modal">
+    <div class="teaser-header">
+      <div class="teaser-header-tag">Investment Teaser Request</div>
+      <div class="teaser-project-name" id="teaserProjectName">—</div>
+      <div class="teaser-project-type" id="teaserProjectType">—</div>
+      <button class="teaser-close" onclick="closeTeaserModal(null)">&times;</button>
+    </div>
+    <div class="teaser-body">
+      <p class="teaser-intro">
+        Please identify yourself below. Upon verification, you will receive the investment teaser and <strong>NDA</strong> for this specific project within 24 hours.
+      </p>
+      <div class="teaser-form-row">
+        <div class="teaser-form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="First name">
+        </div>
+        <div class="teaser-form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Last name">
+        </div>
+      </div>
+      <div class="teaser-form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="teaser-form-group">
+        <label>Organization / Fund</label>
+        <input type="text" placeholder="Company or fund name">
+      </div>
+      <div class="teaser-form-group">
+        <label>Your Role</label>
+        <input type="text" placeholder="e.g. Managing Partner, Investment Director">
+      </div>
+      <div class="teaser-form-group">
+        <label>Country</label>
+        <input type="text" placeholder="Country of residence">
+      </div>
+      <div class="teaser-nda-note">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b8963e" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>All information is treated with strict confidentiality. By submitting, you agree to receive project materials under NDA. Your details will not be shared with third parties.</span>
+      </div>
+      <button class="teaser-submit" onclick="submitTeaserForm()">Request Teaser &amp; NDA</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
