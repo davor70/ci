@@ -106,6 +106,39 @@
   .btn-cta { background: var(--gold); color: var(--navy); border: none; padding: 16px 44px; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.25s; text-decoration: none; display: inline-block; }
   .btn-cta:hover { background: var(--gold-light); }
 
+  /* ─── SELLERS CONTACT FORM ─── */
+  .cta-section { background: var(--navy); padding: 90px 5%; }
+  .sellers-contact-wrap { display: grid; grid-template-columns: 1fr 1.4fr; gap: 6rem; align-items: start; max-width: 1200px; margin: 0 auto; }
+  .sellers-contact-left h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 300; color: #f5f2ec; line-height: 1.15; margin-bottom: 1rem; }
+  .sellers-contact-left h2 em { font-style: italic; color: var(--gold-light); }
+  .sellers-contact-left p { font-size: 0.9rem; color: rgba(245,242,236,0.55); line-height: 1.75; }
+  .sellers-contact-channels { display: flex; flex-direction: column; gap: 0; }
+  .sellers-channel { display: flex; align-items: center; gap: 1.25rem; padding: 1.1rem 0; border-bottom: 1px solid var(--navy-border); }
+  .sellers-channel:first-child { border-top: 1px solid var(--navy-border); }
+  .sellers-channel-icon { width: 36px; height: 36px; border: 1px solid var(--navy-border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--gold); }
+  .sellers-channel-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,242,236,0.4); margin-bottom: 0.15rem; }
+  .sellers-channel-value { font-size: 0.88rem; color: #f5f2ec; }
+
+  .sellers-form-box { background: var(--navy-mid); border: 1px solid var(--navy-border); padding: 2.5rem; }
+  .sellers-form-group { margin-bottom: 1rem; }
+  .sellers-form-group label { display: block; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,242,236,0.5); margin-bottom: 0.4rem; }
+  .sellers-form-group input,
+  .sellers-form-group select,
+  .sellers-form-group textarea { width: 100%; background: var(--navy); border: 1px solid var(--navy-border); color: #f5f2ec; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; padding: 0.75rem 1rem; outline: none; transition: border-color 0.25s; appearance: none; }
+  .sellers-form-group input:focus,
+  .sellers-form-group select:focus,
+  .sellers-form-group textarea:focus { border-color: var(--gold); }
+  .sellers-form-group input::placeholder,
+  .sellers-form-group textarea::placeholder { color: rgba(245,242,236,0.25); }
+  .sellers-form-group select option { background: var(--navy-mid); }
+  .sellers-form-group textarea { resize: vertical; min-height: 110px; }
+  .sellers-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .sellers-nda-note { display: flex; align-items: flex-start; gap: 0.6rem; background: rgba(184,150,62,0.07); border: 1px solid rgba(184,150,62,0.2); padding: 0.85rem 1rem; margin: 1.25rem 0; }
+  .sellers-nda-note svg { flex-shrink: 0; margin-top: 2px; }
+  .sellers-nda-note span { font-size: 0.75rem; color: rgba(245,242,236,0.55); line-height: 1.55; }
+  .sellers-submit { width: 100%; background: var(--gold); color: var(--navy); border: none; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 1rem; cursor: pointer; transition: background 0.25s; }
+  .sellers-submit:hover { background: var(--gold-light); }
+
   /* ─── FOOTER ─── */
   footer { background: var(--navy); border-top: 1px solid rgba(184,150,62,0.15); padding: 40px 5%; }
   .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
@@ -130,6 +163,7 @@
     .process-grid { grid-template-columns: 1fr 1fr; }
     .process-step { border-right: none; border-bottom: 1px solid rgba(184,150,62,0.15); }
     .req-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .sellers-contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
   }
   @media(max-width: 768px) {
     .page-hero { padding: 120px 4% 60px; }
@@ -145,6 +179,8 @@
     .process-grid { grid-template-columns: 1fr; }
     .benefit-card { padding: 28px 24px; }
     .process-step { padding: 28px 24px; }
+    .sellers-form-box { padding: 1.5rem; }
+    .sellers-form-row { grid-template-columns: 1fr; }
     #cookie-banner { flex-direction: column; align-items: flex-start; padding: 16px 4%; }
     .cookie-actions { width: 100%; }
     .cookie-btn-essential, .cookie-btn-accept { flex: 1; text-align: center; }
@@ -317,11 +353,117 @@
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section">
-  <h2>Ready to find your <em>ideal investor?</em></h2>
-  <p>Contact us today for a confidential consultation. There is no obligation and no upfront cost.</p>
-  <a href="index.html#contact" class="btn-cta">Get in Touch →</a>
+<!-- CONTACT FORM FOR PROJECT OWNERS -->
+<section class="cta-section" id="list-project">
+  <div class="sellers-contact-wrap">
+    <div class="sellers-contact-left">
+      <div class="page-tag" style="justify-content:flex-start;">Submit Your Project</div>
+      <h2 style="text-align:left;">List your project<br><em>confidentially</em></h2>
+      <p style="text-align:left;margin:0 0 2rem;">Complete the form and our team will contact you within 24 hours for a confidential consultation. No obligation, no upfront costs.</p>
+      <div class="sellers-contact-channels">
+        <div class="sellers-channel">
+          <div class="sellers-channel-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="sellers-channel-label">Email</div>
+            <div class="sellers-channel-value">contact@croatia-investments.com</div>
+          </div>
+        </div>
+        <div class="sellers-channel">
+          <div class="sellers-channel-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63 19.79 19.79 0 01.07 2.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="sellers-channel-label">Phone</div>
+            <div class="sellers-channel-value">+385 95 504 3770</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sellers-form-box">
+      <div class="sellers-form-row">
+        <div class="sellers-form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="First name">
+        </div>
+        <div class="sellers-form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Last name">
+        </div>
+      </div>
+      <div class="sellers-form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="sellers-form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+385 ...">
+      </div>
+      <div class="sellers-form-group">
+        <label>Project Location</label>
+        <input type="text" placeholder="City / Region / Address">
+      </div>
+      <div class="sellers-form-row">
+        <div class="sellers-form-group">
+          <label>Project Type</label>
+          <select>
+            <option value="" disabled selected>Select type</option>
+            <option>Residential</option>
+            <option>Tourism / Hotel</option>
+            <option>Mixed-Use</option>
+            <option>Commercial</option>
+            <option>Land / Plot</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="sellers-form-group">
+          <label>Permit Status</label>
+          <select>
+            <option value="" disabled selected>Select status</option>
+            <option>Building Permit Issued</option>
+            <option>Location Permit Issued</option>
+            <option>Permit in Process</option>
+            <option>No Permit Yet</option>
+          </select>
+        </div>
+      </div>
+      <div class="sellers-form-row">
+        <div class="sellers-form-group">
+          <label>Total Investment Required</label>
+          <select>
+            <option value="" disabled selected>Select range</option>
+            <option>Under €1M</option>
+            <option>€1M – €5M</option>
+            <option>€5M – €20M</option>
+            <option>€20M – €50M</option>
+            <option>€50M – €100M</option>
+            <option>Over €100M</option>
+          </select>
+        </div>
+        <div class="sellers-form-group">
+          <label>Preferred Deal Structure</label>
+          <select>
+            <option value="" disabled selected>Select structure</option>
+            <option>Full Acquisition</option>
+            <option>Joint Venture (JV)</option>
+            <option>Equity Investment</option>
+            <option>Open to Discussion</option>
+          </select>
+        </div>
+      </div>
+      <div class="sellers-form-group">
+        <label>Brief Project Description</label>
+        <textarea placeholder="Describe your project — size, current status, what you are looking for..."></textarea>
+      </div>
+      <div class="sellers-nda-note">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b8963e" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>All information is treated with strict confidentiality. We will not share your details or project information with any third party without your explicit consent.</span>
+      </div>
+      <button class="sellers-submit" onclick="submitSellersForm()">Submit Project for Review</button>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -358,6 +500,17 @@ function cookieChoice(type) {
   b.style.opacity = '0';
   b.style.transform = 'translateY(20px)';
   setTimeout(function() { b.style.display = 'none'; }, 320);
+}
+function submitSellersForm() {
+  var box = document.querySelector('.sellers-form-box');
+  box.innerHTML = `
+    <div style="text-align:center;padding:3rem 1rem;">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#b8963e" stroke-width="1.2" style="margin-bottom:1.5rem;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10" stroke="#b8963e" stroke-width="1.5"/></svg>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:#f5f2ec;margin-bottom:0.75rem;">Submission Received</div>
+      <p style="font-size:0.88rem;color:rgba(245,242,236,0.55);line-height:1.75;max-width:360px;margin:0 auto;">
+        Thank you for submitting your project. Our team will review the details and contact you within 24 hours for a confidential consultation.
+      </p>
+    </div>`;
 }
 </script>
 
