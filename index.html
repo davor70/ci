@@ -112,17 +112,7 @@
   .nav-mobile-close { position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 2rem; cursor: pointer; line-height: 1; padding: 4px 8px; }
 
   /* ─── HERO ─── */
-  #hero {
-    position: relative;
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 42%;
-    grid-template-rows: 1fr;
-    align-items: end;
-    padding: 120px 5% 7rem;
-    overflow: hidden;
-    gap: 0 3rem;
-  }
+  /* #hero - see collage section below */
 
   .hero-bg {
     position: absolute; inset: 0; z-index: 0;
@@ -147,15 +137,17 @@
     mask-image: linear-gradient(to bottom right, transparent 30%, black 70%);
   }
 
-  .hero-map-accent { display: none; }
-
-  .hero-content {
-    position: relative; z-index: 5;
-    grid-column: 1;
-    grid-row: 1;
-    max-width: 100%;
-    align-self: end;
+  .hero-map-accent {
+    position: absolute;
+    right: 6%;
+    top: 18%;
+    width: 480px;
+    height: 480px;
+    z-index: 2;
+    opacity: 0.12;
   }
+
+  /* .hero-content - see collage section below */
 
   .hero-label {
     display: inline-flex;
@@ -1186,8 +1178,8 @@
     .nav-cta-sellers { display: none; }
 
     /* Hero */
-    #hero { padding: 90px 5% 4rem; min-height: 60vh; }
-    .hero-stats { right: 2rem; bottom: 4rem; }
+    /* #hero - see collage section below */
+    .hero-stats { display: none; }
     .hero-h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
 
     /* Sections */
@@ -1226,7 +1218,7 @@
     nav svg { height: 44px !important; }
 
     /* Hero */
-    #hero { padding: 80px 4% 3rem; min-height: 50vh; }
+    /* #hero - see collage section below */
     .hero-stats { display: none; }
     .hero-h1 { font-size: 2.1rem; line-height: 1.12; }
     .hero-sub { font-size: 0.9rem; }
@@ -1288,17 +1280,35 @@
   }
 
   /* ─── HERO COLLAGE ─── */
-  .hero-collage {
-    grid-column: 2;
-    grid-row: 1;
-    align-self: stretch;
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 120px 5% 7rem;
+    overflow: hidden;
+  }
+
+  .hero-content {
     position: relative;
     z-index: 5;
+    max-width: 55%;
+  }
+
+  .hero-collage {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38%;
+    height: 70vh;
+    max-height: 600px;
+    z-index: 4;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 5px;
-    min-height: 420px;
     opacity: 0;
     animation: fadeLeft 1s 0.9s forwards;
   }
@@ -1325,20 +1335,19 @@
     filter: brightness(0.82) saturate(0.88);
     transition: transform 0.6s ease, filter 0.4s;
   }
+
   .hero-collage-cell:hover img {
     transform: scale(1.06);
     filter: brightness(0.94) saturate(1.05);
   }
 
-  /* Lijeva slika: puna visina (2 reda) */
   .hero-collage-cell:first-child {
     grid-row: 1 / span 2;
   }
 
   @media (max-width: 1100px) {
-    #hero { grid-template-columns: 1fr !important; }
     .hero-collage { display: none; }
-    .hero-stats { display: flex !important; }
+    .hero-content { max-width: 100%; }
   }
 
 </style>
@@ -1411,7 +1420,7 @@
   <div class="hero-grid"></div>
 
   <!-- Decorative Croatia outline -->
-  <svg class="hero-map-accent" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg class="hero-map-accent" style="display:none" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M80,120 Q120,80 180,90 Q240,100 280,70 Q340,40 400,80 Q440,100 460,140 Q480,180 440,210 Q400,240 360,260 Q320,280 300,320 Q280,360 240,370 Q200,380 170,350 Q140,320 120,290 Q90,250 70,210 Q50,170 80,120Z" stroke="#b8963e" stroke-width="1.5" fill="none" stroke-dasharray="4 6"/>
     <circle cx="220" cy="180" r="4" fill="#b8963e" opacity="0.7"/>
     <circle cx="310" cy="140" r="3" fill="#b8963e" opacity="0.5"/>
