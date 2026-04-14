@@ -1811,14 +1811,19 @@
           <input type="text" placeholder="Fund / Family Office / Company">
         </div>
         <div class="form-group">
-          <label>Investment Interest</label>
-          <select>
-            <option value="" disabled selected>Select category</option>
-            <option>Residential Development</option>
-            <option>Mixed-Use Projects</option>
-            <option>Tourism Assets</option>
-            <option>All Opportunities</option>
-          </select>
+          <label>Investment Interest <span style="font-size:0.6rem;color:var(--white-dim);letter-spacing:0;text-transform:none;font-weight:300;">(select all that apply)</span></label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--navy-border);">
+            <label style="display:flex;align-items:center;gap:0.6rem;background:var(--navy);padding:0.6rem 0.85rem;cursor:pointer;font-size:0.82rem;color:var(--white-dim);letter-spacing:0;text-transform:none;font-weight:300;border-bottom:1px solid var(--navy-border);"><input type="checkbox" name="interest" value="Residential" style="accent-color:#b8963e;width:14px;height:14px;flex-shrink:0;"> Residential</label>
+            <label style="display:flex;align-items:center;gap:0.6rem;background:var(--navy);padding:0.6rem 0.85rem;cursor:pointer;font-size:0.82rem;color:var(--white-dim);letter-spacing:0;text-transform:none;font-weight:300;border-bottom:1px solid var(--navy-border);border-left:1px solid var(--navy-border);"><input type="checkbox" name="interest" value="Mixed-Use" style="accent-color:#b8963e;width:14px;height:14px;flex-shrink:0;"> Mixed-Use</label>
+            <label style="display:flex;align-items:center;gap:0.6rem;background:var(--navy);padding:0.6rem 0.85rem;cursor:pointer;font-size:0.82rem;color:var(--white-dim);letter-spacing:0;text-transform:none;font-weight:300;border-bottom:1px solid var(--navy-border);"><input type="checkbox" name="interest" value="Tourism" style="accent-color:#b8963e;width:14px;height:14px;flex-shrink:0;"> Tourism Assets</label>
+            <label style="display:flex;align-items:center;gap:0.6rem;background:var(--navy);padding:0.6rem 0.85rem;cursor:pointer;font-size:0.82rem;color:var(--white-dim);letter-spacing:0;text-transform:none;font-weight:300;border-bottom:1px solid var(--navy-border);border-left:1px solid var(--navy-border);"><input type="checkbox" name="interest" value="Commercial" style="accent-color:#b8963e;width:14px;height:14px;flex-shrink:0;"> Commercial & Office</label>
+            <label style="display:flex;align-items:center;gap:0.6rem;background:var(--navy);padding:0.6rem 0.85rem;cursor:pointer;font-size:0.82rem;color:var(--white-dim);letter-spacing:0;text-transform:none;font-weight:300;border-bottom:1px solid var(--navy-border);"><input type="checkbox" name="interest" value="Industrial" style="accent-color:#b8963e;width:14px;height:14px;flex-shrink:0;"> Industrial & Logistics</label>
+            <label style="display:flex;align-items:center;gap:0.6rem;background:var(--navy);padding:0.6rem 0.85rem;cursor:pointer;font-size:0.82rem;color:var(--white-dim);letter-spacing:0;text-transform:none;font-weight:300;border-bottom:1px solid var(--navy-border);border-left:1px solid var(--navy-border);"><input type="checkbox" name="interest" value="Energy" style="accent-color:#b8963e;width:14px;height:14px;flex-shrink:0;"> Energy Projects</label>
+            <label style="display:flex;align-items:center;gap:0.6rem;background:var(--navy);padding:0.6rem 0.85rem;cursor:pointer;font-size:0.82rem;color:var(--white-dim);letter-spacing:0;text-transform:none;font-weight:300;border-bottom:1px solid var(--navy-border);"><input type="checkbox" name="interest" value="Agricultural" style="accent-color:#b8963e;width:14px;height:14px;flex-shrink:0;"> Agricultural Land</label>
+            <label style="display:flex;align-items:center;gap:0.6rem;background:var(--navy);padding:0.6rem 0.85rem;cursor:pointer;font-size:0.82rem;color:var(--white-dim);letter-spacing:0;text-transform:none;font-weight:300;border-bottom:1px solid var(--navy-border);border-left:1px solid var(--navy-border);"><input type="checkbox" name="interest" value="Healthcare" style="accent-color:#b8963e;width:14px;height:14px;flex-shrink:0;"> Healthcare & Senior</label>
+            <label style="display:flex;align-items:center;gap:0.6rem;background:var(--navy);padding:0.6rem 0.85rem;cursor:pointer;font-size:0.82rem;color:var(--white-dim);letter-spacing:0;text-transform:none;font-weight:300;"><input type="checkbox" name="interest" value="Marina" style="accent-color:#b8963e;width:14px;height:14px;flex-shrink:0;"> Marina & Nautical</label>
+            <label style="display:flex;align-items:center;gap:0.6rem;background:var(--navy);padding:0.6rem 0.85rem;cursor:pointer;font-size:0.82rem;color:var(--white-dim);letter-spacing:0;text-transform:none;font-weight:300;border-left:1px solid var(--navy-border);"><input type="checkbox" name="interest" value="All" style="accent-color:#b8963e;width:14px;height:14px;flex-shrink:0;"> All Opportunities</label>
+          </div>
         </div>
         <div class="form-group">
           <label>Investment Capacity</label>
